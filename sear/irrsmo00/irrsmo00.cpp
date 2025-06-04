@@ -75,7 +75,7 @@ void IRRSMO00::call_irrsmo00(SecurityRequest &request,
   // Handle result buffer too small scenario.
   int bytes_remaining         = racf_reason_code;
   // int new_result_length       = raw_result_length + bytes_remaining + 1;
-  int new_result_length       = 15000;
+  int new_result_length       = 1000000;
   auto full_result_unique_ptr = std::make_unique<char[]>(new_result_length);
   Logger::getInstance().debugAllocate(full_result_unique_ptr.get(), 64,
                                       new_result_length);
