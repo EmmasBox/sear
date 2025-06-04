@@ -92,12 +92,16 @@ void IRRSMO00::call_irrsmo00(SecurityRequest &request,
            reinterpret_cast<char *>(&running_userid_struct), acee,
            &bytes_remaining, p_next_byte);
 
+  Logger::getInstance().debug("IRRSMO64 done!", "");
+
   request.setSAFReturnCode(saf_return_code);
   request.setRACFReturnCode(racf_return_code);
   request.setRACFReasonCode(racf_reason_code);
   request.setRawResultPointer(full_result_unique_ptr.get());
   full_result_unique_ptr.release();
   request.setRawResultLength(new_result_length);
+
+  Logger::getInstance().debug("call_irrsmo00 returns now...", "");
 }
 
 bool IRRSMO00::does_profile_exist(SecurityRequest &request) {
