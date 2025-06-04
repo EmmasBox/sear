@@ -77,7 +77,7 @@ void IRRSMO00::call_irrsmo00(SecurityRequest &request,
   int bytes_remaining =     total_result_length - raw_result_length;
   // Result buffer must always be at minimum 10000 bytes, even in the case of a continuation
   if (bytes_remaining < 10000)
-    bytes_remaining = 1000;
+    bytes_remaining = 10000;
 
   // move existing result data into a new buffer with capacity to hold entire result
   int new_result_length       = raw_result_length + bytes_remaining + 1;
