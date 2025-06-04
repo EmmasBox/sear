@@ -73,7 +73,8 @@ void IRRSMO00::call_irrsmo00(SecurityRequest &request,
   }
 
   // Handle result buffer too small scenario.
-  int bytes_remaining         = racf_reason_code;
+  // Result buffer must always be at minimum 10000 bytes, even in the case of a continuation
+  int bytes_remaining         = racf_reason_code < 10000 ? 10000 : racf_reason_code;
   int new_result_length       = raw_result_length + bytes_remaining + 1;
   auto full_result_unique_ptr = std::make_unique<char[]>(new_result_length);
   Logger::getInstance().debugAllocate(full_result_unique_ptr.get(), 64,
@@ -82,14 +83,17 @@ void IRRSMO00::call_irrsmo00(SecurityRequest &request,
   std::memcpy(full_result_unique_ptr.get(), result_unique_ptr.get(),
               raw_result_length);
 
-  char *p_next_byte =
+  char *continuation_buffer =
       full_result_unique_ptr.get() + raw_result_length * sizeof(unsigned char);
 
   IRRSMO64(work_area, alet, &saf_return_code, alet, &racf_return_code, alet,
            &racf_reason_code, &num_parms, &fn, &irrsmo00_options,
            &raw_request_length, request.getRawRequestPointer(), req_handle,
            reinterpret_cast<char *>(&running_userid_struct), acee,
-           &bytes_remaining, p_next_byte);
+           &bytes_remaining, continuation_buffer);
+  
+  // Truncate result to actual continuation result buffer length
+  new_result_length = raw_result_length + bytes_remaining;
 
   request.setSAFReturnCode(saf_return_code);
   request.setRACFReturnCode(racf_return_code);
