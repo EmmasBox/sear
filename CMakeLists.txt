@@ -143,7 +143,7 @@ target_link_libraries(sear PRIVATE "${STRT}" OpenSSL::SSL "${ZOSLIB}")
 if (SEAR_ENABLE_PYTHON)
     find_package(Python3 REQUIRED COMPONENTS Development Development.SABIModule)
 
-    Python3_add_library(pysear MODULE USE_SABI 3.12 sear/python/_sear.c)
+    Python3_add_library(pysear MODULE USE_SABI 3.12 sear/python/_sear.c $<TARGET_OBJECTS:sear>)
     target_link_libraries(pysear PRIVATE sear Python3::Python)
 
     target_link_options(pysear PUBLIC "-Wl,-b,edit=no")
