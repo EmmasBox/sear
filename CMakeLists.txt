@@ -145,6 +145,8 @@ if (SEAR_ENABLE_PYTHON)
     Python3_add_library(pysear MODULE USE_SABI 3.12 sear/python/_sear.c)
     target_link_libraries(pysear PRIVATE sear Python3::Python)
 
+    target_link_options(pysear PUBLIC "-Wl,-b,edit=no")
+
     if (DEFINED SEAR_PYTHON_EXTENSION_PATH)
         message(STATUS "Installing Python module to: ${SEAR_PYTHON_EXTENSION_PATH}")
         cmake_path(GET SEAR_PYTHON_EXTENSION_PATH FILENAME MODULE_FILENAME)
