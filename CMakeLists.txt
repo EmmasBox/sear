@@ -71,6 +71,7 @@ endif()
 # The library for SEAR
 add_library(
     sear
+    OBJECT
 
     sear/irrsdl00/irrsdl00.cpp
     sear/irrsdl00/keyring_extractor.cpp
