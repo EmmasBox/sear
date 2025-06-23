@@ -21,7 +21,7 @@ set(CMAKE_C_COMPILER "${IBM_CLANG_C}")
 set(CMAKE_CXX_COMPILER "${IBM_CLANG_CXX}")
 set(CMAKE_ASM_COMPILER "${IBM_ASSEMBLER}")
 
-set(IBM_CLANG_ARGS "-m64 -fzos-le-char-mode=ascii")
+set(IBM_CLANG_ARGS "-m64 -fzos-le-char-mode=ascii -fno-short-enums")
 set(CMAKE_C_FLAGS "${IBM_CLANG_ARGS}")
 set(CMAKE_CXX_FLAGS "${IBM_CLANG_ARGS}")
 set(CMAKE_ASM_FLAGS "-mGOFF")
