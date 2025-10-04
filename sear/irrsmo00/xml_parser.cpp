@@ -76,10 +76,11 @@ nlohmann::json XMLParser::buildJSONString(SecurityRequest& request) {
   return result_json;
 }
 
-void XMLParser::XMLToJSON(nlohmann::json& input_json, const std::string xml_string) {
+void XMLParser::XMLToJSON(nlohmann::json& input_json, std::string xml_string) {
   rapidxml::xml_document<> doc;
   rapidxml::xml_node<> * root_node;
-  doc.parse<0>(xml_string); 
+
+  doc.parse<0>(xml_string.c_str()); 
 
   // Find our root node
 	root_node = doc.first_node("securityresult");
