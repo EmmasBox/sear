@@ -100,6 +100,9 @@ void XMLParser::XMLToJSON(nlohmann::json& input_json, std::string xml_string) {
 	}
 
   input_json["commands"] = {new_json};
+    // Convert profile JSON to C string.
+  std::string result_json_string = input_json.dump();
+  Logger::getInstance().debug("new JSON:", result_json_string);
   return;
 }
 
