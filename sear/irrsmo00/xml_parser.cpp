@@ -79,13 +79,12 @@ void XMLParser::XMLToJSON(nlohmann::json& input_json, std::string xml_string) {
 
   // Find our root node
 	root_node = doc.first_node("securityresult");
-   Logger::getInstance().debug("test1");
+
 	for (rapidxml::xml_node<> * result_node = root_node->first_node(); result_node; result_node = result_node->next_sibling())
 	{
     Logger::getInstance().debug("node: ",command_node->name());
-    if (result_node->name() != "returncode" && result_node->name() != "reasoncode") {
-      rapidxml::xml_node<> * command_node = result_node->first_node("command");
-
+    rapidxml::xml_node<> * command_node = result_node->first_node("command");
+    if (command_node) {
       input_json["command"]["safreturncode"] = command_node->first_node("safreturncode")->value();
       input_json["command"]["returncode"] = command_node->first_node("returncode")->value();
       input_json["command"]["reasoncode"] = command_node->first_node("reasoncode")->value();
@@ -94,6 +93,8 @@ void XMLParser::XMLToJSON(nlohmann::json& input_json, std::string xml_string) {
       Logger::getInstance().debug("racf reason code: ", command_node->first_node("reasoncode")->value());
 
       Logger::getInstance().debug("node: ",result_node->name());
+
+      break;
     }
 
 	}
