@@ -81,7 +81,7 @@ void XMLParser::XMLToJSON(nlohmann::json& input_json, std::string xml_string) {
   rapidxml::xml_document<> doc;
   rapidxml::xml_node<> * root_node;
 
-  std::vector xml_copy {xml_string.begin(),xml_string.end()};
+  std::vector<char> xml_copy {xml_string.begin(),xml_string.end()};
   xml_copy.push_back('\0');
   doc.parse<0>(xml_copy.data()); 
 
