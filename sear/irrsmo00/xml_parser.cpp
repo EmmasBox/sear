@@ -71,6 +71,8 @@ void XMLParser::XMLToJSON(nlohmann::json& input_json, std::string xml_string) {
   rapidxml::xml_document<> doc;
   rapidxml::xml_node<> * root_node;
 
+  nlohmann::json new_json;
+
   std::vector<char> xml_copy {xml_string.begin(),xml_string.end()};
   xml_copy.push_back('\0');
   doc.parse<0>(xml_copy.data()); 
@@ -83,10 +85,10 @@ void XMLParser::XMLToJSON(nlohmann::json& input_json, std::string xml_string) {
     if (result_node->name() != "returncode" && result_node->name() != "reasoncode") {
       rapidxml::xml_node<> * command_node = result_node->first_node("command");
 
-      input_json["command"]["command"]["safreturncode"] = command_node->first_node("safreturncode")->value();
-      input_json["command"]["returncode"] = command_node->first_node("returncode")->value();
-      input_json["command"]["reasoncode"] = command_node->first_node("reasoncode")->value();
-      input_json["command"]["image"] = command_node->first_node("image")->value();
+      new_json["command"]["command"]["safreturncode"] = command_node->first_node("safreturncode")->value();
+      new_json["command"]["returncode"] = command_node->first_node("returncode")->value();
+      new_json["command"]["reasoncode"] = command_node->first_node("reasoncode")->value();
+      new_json["command"]["image"] = command_node->first_node("image")->value();
       Logger::getInstance().debug("node: ",command_node->name());
       Logger::getInstance().debug("command: ",command_node->first_node("image")->value());
       Logger::getInstance().debug("racf reason code: ", command_node->first_node("reasoncode")->value());
@@ -95,6 +97,8 @@ void XMLParser::XMLToJSON(nlohmann::json& input_json, std::string xml_string) {
     }
 
 	}
+
+  input_json["commands"] = {new_json};
   return;
 }
 
