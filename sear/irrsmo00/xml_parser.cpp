@@ -89,6 +89,7 @@ void XMLParser::XMLToJSON(nlohmann::json& input_json, std::string xml_string) {
     input_json["command"]["reasoncode"] = command_node->first_node("reasoncode")->value();
     input_json["command"]["image"] = command_node->first_node("image")->value();
     Logger::getInstance().debug("node: ",command_node->name());
+    Logger::getInstance().debug("command: ",command_node->first_node("image")->value());
     Logger::getInstance().debug("racf reason code: ", command_node->first_node("reasoncode")->value());
 
 	}
