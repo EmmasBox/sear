@@ -82,7 +82,7 @@ void XMLParser::XMLToJSON(nlohmann::json& input_json, std::string xml_string) {
    Logger::getInstance().debug("test1");
 	for (rapidxml::xml_node<> * result_node = root_node->first_node(); result_node; result_node = result_node->next_sibling())
 	{
-    
+    Logger::getInstance().debug("node: ",command_node->name());
     if (result_node->name() != "returncode" && result_node->name() != "reasoncode") {
       rapidxml::xml_node<> * command_node = result_node->first_node("command");
 
@@ -90,7 +90,6 @@ void XMLParser::XMLToJSON(nlohmann::json& input_json, std::string xml_string) {
       input_json["command"]["returncode"] = command_node->first_node("returncode")->value();
       input_json["command"]["reasoncode"] = command_node->first_node("reasoncode")->value();
       input_json["command"]["image"] = command_node->first_node("image")->value();
-      Logger::getInstance().debug("node: ",command_node->name());
       Logger::getInstance().debug("command: ",command_node->first_node("image")->value());
       Logger::getInstance().debug("racf reason code: ", command_node->first_node("reasoncode")->value());
 
