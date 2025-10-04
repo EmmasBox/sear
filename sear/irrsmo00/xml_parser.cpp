@@ -84,12 +84,12 @@ void XMLParser::XMLToJSON(nlohmann::json& input_json, std::string xml_string) {
     Logger::getInstance().debug("node: ",result_node->name());
     for(rapidxml::xml_node<> * command_node = result_node->first_node("command"); command_node; command_node = command_node->next_sibling())
     {
-      input_json["return_codes"]["saf_return_code"] = result_node->first_node("safreturncode")->value();
-      input_json["return_codes"]["racf_return_code"] = result_node->first_node("returncode")->value();
-      input_json["return_codes"]["racf_reason_code"] = result_node->first_node("reasoncode")->value();
+      input_json["return_codes"]["saf_return_code"] = command_node->first_node("safreturncode")->value();
+      input_json["return_codes"]["racf_return_code"] = command_node->first_node("returncode")->value();
+      input_json["return_codes"]["racf_reason_code"] = command_node->first_node("reasoncode")->value();
       //input_json["return_codes"]["command"] = first_node("image")->value();
       Logger::getInstance().debug("node: ",command_node->name());
-       Logger::getInstance().debug("racf reason code: ", result_node->first_node("reasoncode")->value());
+       Logger::getInstance().debug("racf reason code: ", command_node->first_node("reasoncode")->value());
     }
 	}
   return;
