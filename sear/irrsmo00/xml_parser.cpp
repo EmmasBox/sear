@@ -102,3 +102,4 @@ void XMLParser::XMLToJSON(nlohmann::json& input_json, std::string xml_string) {
   Logger::getInstance().debug("new JSON:", result_json_string);
   return;
 }
+}
