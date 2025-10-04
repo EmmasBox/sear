@@ -2,6 +2,7 @@
 #define __SEAR_XML_PARSER_H_
 
 #include <nlohmann/json.hpp>
+#include <rapidxml.hpp>
 #include <string>
 
 #include "logger.hpp"
@@ -15,6 +16,7 @@ class XMLParser {
   void parseXMLData(nlohmann::json& input_json,
                     const std::string& data_within_outer_tags,
                     const std::string& outer_tag);
+  void XMLToJSON(nlohmann::json& input_json, const std::string xml_string)
   static void updateJSON(nlohmann::json& input_json, nlohmann::json& inner_data,
                          std::string outer_tag);
   static std::string replaceXMLChars(std::string xml_data);

@@ -8,6 +8,7 @@
 #include "../conversion.hpp"
 #include "logger.hpp"
 #include "sear_error.hpp"
+#include <rapidxml.hpp>
 
 #ifdef __TOS_390__
 #include <unistd.h>
@@ -62,7 +63,7 @@ nlohmann::json XMLParser::buildJSONString(SecurityRequest& request) {
     admin_xml_body.erase(admin_xml_body.find(admin_close_tag),
                          admin_close_tag.length());
 
-    XMLParser::parseXMLTags(result_json, admin_xml_body);
+    XMLParser::XMLToJSON(result_json, xml_buffer);
 
     request.setSEARReturnCode(0);
   } else {
@@ -73,6 +74,28 @@ nlohmann::json XMLParser::buildJSONString(SecurityRequest& request) {
   }
 
   return result_json;
+}
+
+void XMLParser::XMLToJSON(nlohmann::json& input_json, const std::string xml_string) {
+  rapidxml::xml_document<> doc;
+  rapidxml::xml_node<> * root_node;
+  doc.parse<0>(xml_string); 
+
+  // Find our root node
+	root_node = doc.first_node("securityresult");
+
+	for (xml_node<> * result_node = root_node->first_node(); result_node; result_node = result_node->next_sibling())
+	{
+    for(xml_node<> * admin_type_node = result_node->first_node("command"); admin_type_node; admin_type_node = admin_type_node->next_sibling())
+    {
+      result_node->first_attribute("safreturncode")->input_json["saf_return_code"];
+      result_node->first_attribute("returncode")->input_json["racf_return_code"];
+      result_node->first_attribute("reasoncode")->input_json["reason_code"];
+      result_node->first_attribute("image")->input_json["command"];
+    }
+
+	}
+  return;
 }
 
 // Private Methods of XMLParser
