@@ -8,7 +8,7 @@
 #include "../conversion.hpp"
 #include "logger.hpp"
 #include "sear_error.hpp"
-#include <rapidxml.hpp>
+#include <../../externals/rapidxml/rapidxml.hpp>
 
 #ifdef __TOS_390__
 #include <unistd.h>
@@ -94,7 +94,6 @@ void XMLParser::XMLToJSON(nlohmann::json& input_json, std::string xml_string) {
       input_json["reason_code"] = result_node->first_attribute("reasoncode")->value();
       input_json["command"] = result_node->first_attribute("image")->value();
     }
-
 	}
   return;
 }
