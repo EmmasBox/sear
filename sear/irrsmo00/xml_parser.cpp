@@ -4,7 +4,6 @@
 #include <memory>
 #include <regex>
 #include <string>
-#include <vector>
 
 #include "../conversion.hpp"
 #include "logger.hpp"
@@ -81,9 +80,7 @@ void XMLParser::XMLToJSON(nlohmann::json& input_json, std::string xml_string) {
   rapidxml::xml_document<> doc;
   rapidxml::xml_node<> * root_node;
 
-  vector<char> xml_copy(xml_string.begin(), xml_string.end());
-
-  doc.parse<0>(&xml_copy[0]); 
+  doc.parse<0>(xml_string.data()); 
 
   // Find our root node
 	root_node = doc.first_node("securityresult");
