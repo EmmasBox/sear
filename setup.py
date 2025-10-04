@@ -109,7 +109,7 @@ def main():
                         "externals/json",
                         "externals/json-schema-validator",
                         "externals/iconv",
-                        "externals/rapidxml"
+                        "externals/rapidxml",
                         os.environ["ZOPEN_ROOTFS"] + "/usr/local/include",
                     ]
                 ),
