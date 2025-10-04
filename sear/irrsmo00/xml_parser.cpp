@@ -84,9 +84,9 @@ void XMLParser::XMLToJSON(nlohmann::json& input_json, const std::string xml_stri
   // Find our root node
 	root_node = doc.first_node("securityresult");
 
-	for (xml_node<> * result_node = root_node->first_node(); result_node; result_node = result_node->next_sibling())
+	for (rapidxml::xml_node<> * result_node = root_node->first_node(); result_node; result_node = result_node->next_sibling())
 	{
-    for(xml_node<> * admin_type_node = result_node->first_node("command"); admin_type_node; admin_type_node = admin_type_node->next_sibling())
+    for(rapidxml::xml_node<> * admin_type_node = result_node->first_node("command"); admin_type_node; admin_type_node = admin_type_node->next_sibling())
     {
       input_json["saf_return_code"] = result_node->first_attribute("safreturncode")->value();
       input_json["racf_return_code"] = result_node->first_attribute("returncode")->value();
