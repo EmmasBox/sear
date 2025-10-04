@@ -88,7 +88,7 @@ void XMLParser::XMLToJSON(nlohmann::json& input_json, const std::string xml_stri
 	{
     for(xml_node<> * admin_type_node = result_node->first_node("command"); admin_type_node; admin_type_node = admin_type_node->next_sibling())
     {
-      result_node->first_attribute("safreturncode")->input_json["saf_return_code"];
+      input_json["saf_return_code"] = result_node->first_attribute("safreturncode")->value();
       result_node->first_attribute("returncode")->input_json["racf_return_code"];
       result_node->first_attribute("reasoncode")->input_json["reason_code"];
       result_node->first_attribute("image")->input_json["command"];
