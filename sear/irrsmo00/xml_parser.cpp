@@ -81,15 +81,16 @@ void XMLParser::XMLToJSON(nlohmann::json& input_json, std::string xml_string) {
 	for (rapidxml::xml_node<> * result_node = root_node->first_node(); result_node; result_node = result_node->next_sibling())
 	{
     
-    Logger::getInstance().debug("test2");
+    Logger::getInstance().debug("node: ",result_node->name());
     for(rapidxml::xml_node<> * admin_type_node = result_node->first_node("command"); admin_type_node; admin_type_node = admin_type_node->next_sibling())
     {
-       Logger::getInstance().debug("saf", result_node->value());
-      input_json["saf_return_code"] = result_node->first_attribute("safreturncode")->value();
-      input_json["racf_return_code"] = result_node->first_attribute("returncode")->value();
-      input_json["reason_code"] = result_node->first_attribute("reasoncode")->value();
-      input_json["command"] = result_node->first_attribute("image")->value();
-      input_json["test"] = result_node->first_attribute("image")->value();
+      Logger::getInstance().debug("node: ",admin_type_node->name());
+       Logger::getInstance().debug("saf", admin_type_node->value());
+      input_json["saf_return_code"] = admin_type_node->first_attribute("safreturncode")->value();
+      input_json["racf_return_code"] = admin_type_node->first_attribute("returncode")->value();
+      input_json["reason_code"] = admin_type_node->first_attribute("reasoncode")->value();
+      input_json["command"] = admin_type_node->first_attribute("image")->value();
+      input_json["test"] = admin_type_node->first_attribute("image")->value();
     }
 	}
   return;
