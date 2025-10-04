@@ -82,7 +82,8 @@ void XMLParser::XMLToJSON(nlohmann::json& input_json, std::string xml_string) {
    Logger::getInstance().debug("test1");
 	for (rapidxml::xml_node<> * result_node = root_node->first_node(); result_node; result_node = result_node->next_sibling())
 	{
-    if (result_node->name() != "returncode" && result_node->name() != "reasoncode") {
+    
+    if ((result_node->name().compare("returncode")) != 0 && (result_node->name().compare("reasoncode")) != 0 ) {
       rapidxml::xml_node<> * command_node = result_node->first_node("command");
 
       new_json["command"]["command"]["safreturncode"] = command_node->first_node("safreturncode")->value();
