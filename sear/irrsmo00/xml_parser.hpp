@@ -12,7 +12,7 @@ namespace SEAR {
 // XMLParser Parses an XML String and forms a JSON String
 class XMLParser {
  private:
-  void XMLToJSON(nlohmann::json& input_json, std::string xml_string);
+  void XMLToJSON( std::string xml_string, nlohmann::json& input_json, SecurityRequest& request);
 
  public:
   nlohmann::json buildJSONString(SecurityRequest& request);
