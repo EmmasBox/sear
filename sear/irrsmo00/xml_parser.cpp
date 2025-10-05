@@ -88,8 +88,8 @@ void XMLParser::XMLToJSON(std::string xml_string, nlohmann::json& input_json, Se
         rapidxml::xml_node<> * errormessage_node = error_node->first_node("errormessage");
         if (errormessage_node) {
           request.setSEARReturnCode(4);
-          std::string errormessage_str = "Error message produced by IRRSMO00: "
-          errormessage_str.append(errormessage_node->value())
+          std::string errormessage_str = "Error message produced by IRRSMO00: ";
+          errormessage_str.append(errormessage_node->value());
           throw SEARError(errormessage_str);
         } else {
           request.setSEARReturnCode(8);
