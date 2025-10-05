@@ -3,6 +3,7 @@
 #include <cstring>
 #include <memory>
 #include <string>
+#include <system_error>
 #include <vector>
 
 #include "../conversion.hpp"
@@ -70,7 +71,7 @@ void XMLParser::XMLToJSON(std::string xml_string, nlohmann::json& input_json, Se
     rapidxml::xml_node<> * error_node = result_node->first_node("error");
     if (result_node->name() == "error") {
       request.setSEARReturnCode(8);
-      throw SEARError("unable to parse XML returned by IRRSMO00");
+      throw SEARError("Unable to parse XML returned by IRRSMO00");
     } else {
       if (command_node) {
         input_json["command"]["safreturncode"] = command_node->first_node("safreturncode")->value();
@@ -84,8 +85,14 @@ void XMLParser::XMLToJSON(std::string xml_string, nlohmann::json& input_json, Se
 
         break;
       } else if (error_node) {
-        request.setSEARReturnCode(4);
-        throw SEARError("unable to parse XML returned by IRRSMO00");
+        rapidxml::xml_node<> * errormessage_node = error_node->first_node("errormessage");
+        if (errormessage_node) {
+          request.setSEARReturnCode(4);
+          throw SEARError("Error message produced by IRRSMO00: " + errormessage_node->value());
+        } else {
+          request.setSEARReturnCode(8);
+          throw SEARError("Unable to parse XML returned by IRRSMO00");
+        }
       }
     }
 	}
