@@ -105,7 +105,7 @@ void XMLParser::XMLToJSON(std::string xml_string, nlohmann::json& input_json, Se
           throw SEARError(errormessage_str);
         } else {
           request.setSEARReturnCode(8);
-          throw SEARError("Unable to parse XML returned by IRRSMO00");
+          throw SEARError("Unable to find error message returned by IRRSMO00");
         }
         break;
       }
