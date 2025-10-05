@@ -2,7 +2,6 @@
 
 #include <cstring>
 #include <memory>
-#include <regex>
 #include <string>
 #include <vector>
 
@@ -44,12 +43,6 @@ nlohmann::json XMLParser::buildJSONString(SecurityRequest& request) {
   xml_buffer = toUTF8(ebcdic_string, "IBM-1047");
 
   Logger::getInstance().debug("Decoded result XML:", xml_buffer);
-
-  // Regular expression designed to match the header attributes, generic body,
-  // and closing tags of the xml
-  std::regex full_xml_regex{
-      R"~(<\?xml version="1\.0" encoding="IBM-1047"\?><securityresult xmlns="http:\/\/www\.ibm\.com\/systems\/zos\/saf\/IRRSMO00Result1"><([a-z]*) ([^>]*)>(<.+>)<returncode>.*<\/returncode><reasoncode>.*<\/reasoncode><\/securityresult>)~"};
-  std::smatch useful_xml_substrings;
 
   nlohmann::json result_json;
 
