@@ -96,7 +96,7 @@ void XMLParser::XMLToJSON(std::string xml_string, nlohmann::json& input_json, Se
           errormessage_str.append(erroroffset_node->value());
           errormessage_str.append(" (");
           errormessage_str.append(textinerror_node->value());
-          errormessage_str.append(" )");
+          errormessage_str.append(")");
           throw SEARError(errormessage_str);
         } else if (errormessage_node) {
           request.setSEARReturnCode(4);
