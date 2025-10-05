@@ -3,7 +3,6 @@
 #include <cstring>
 #include <memory>
 #include <string>
-#include <system_error>
 #include <vector>
 
 #include "../conversion.hpp"
