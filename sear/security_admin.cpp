@@ -44,8 +44,10 @@ void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
       SEAR_SCHEMA_VALIDATOR.validate(request_json);
     } catch (const std::exception &ex) {
       request_.setSEARReturnCode(8);
-      throw SEARError(
-          "The provided request JSON does not contain a valid request");
+      std::string schema_error_str;
+      schema_error_str.append(ex.what());
+      
+      throw SEARError(schema_error_str);
     }
     Logger::getInstance().debug("Done");
 
