@@ -53,7 +53,7 @@ nlohmann::json XMLParser::buildJSONString(SecurityRequest& request) {
 
   nlohmann::json result_json;
 
-  XMLParser::XMLToJSON(result_json, xml_buffer, request);
+  XMLParser::XMLToJSON(xml_buffer, result_json, request);
 
   return result_json;
 }
