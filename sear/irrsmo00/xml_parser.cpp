@@ -8,7 +8,7 @@
 #include "../conversion.hpp"
 #include "logger.hpp"
 #include "sear_error.hpp"
-#include "rapidxml.hpp"
+#include <rapidxml.hpp>
 
 #ifdef __TOS_390__
 #include <unistd.h>
