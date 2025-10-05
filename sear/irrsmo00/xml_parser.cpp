@@ -52,7 +52,7 @@ nlohmann::json XMLParser::buildJSONString(SecurityRequest& request) {
   return result_json;
 }
 
-void XMLParser::XMLToJSON(std::string xml_string, nlohmann::json& input_json, SecurityRequest& request) {
+void XMLParser::XMLToJSON(std::string xml_string, nlohmann::json& output_json, SecurityRequest& request) {
   rapidxml::xml_document<> doc;
   rapidxml::xml_node<> * root_node;
 
@@ -74,10 +74,10 @@ void XMLParser::XMLToJSON(std::string xml_string, nlohmann::json& input_json, Se
       throw SEARError("Unable to parse XML returned by IRRSMO00");
     } else {
       if (command_node) {
-        input_json["command"]["safreturncode"] = command_node->first_node("safreturncode")->value();
-        input_json["command"]["returncode"] = command_node->first_node("returncode")->value();
-        input_json["command"]["reasoncode"] = command_node->first_node("reasoncode")->value();
-        input_json["command"]["image"] = command_node->first_node("image")->value();
+        output_json["command"]["safreturncode"] = command_node->first_node("safreturncode")->value();
+        output_json["command"]["returncode"] = command_node->first_node("returncode")->value();
+        output_json["command"]["reasoncode"] = command_node->first_node("reasoncode")->value();
+        output_json["command"]["image"] = command_node->first_node("image")->value();
         Logger::getInstance().debug("command: ",command_node->first_node("image")->value());
         Logger::getInstance().debug("racf reason code: ", command_node->first_node("reasoncode")->value());
 
@@ -112,7 +112,7 @@ void XMLParser::XMLToJSON(std::string xml_string, nlohmann::json& input_json, Se
     }
 	}
     // Convert profile JSON to C string.
-  std::string result_json_string = input_json.dump();
+  std::string result_json_string = output_json.dump();
   Logger::getInstance().debug("new JSON:", result_json_string);
   return;
 }
