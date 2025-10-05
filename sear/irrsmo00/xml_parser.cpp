@@ -87,12 +87,21 @@ void XMLParser::XMLToJSON(std::string xml_string, nlohmann::json& input_json, Se
       } else if (error_node) {
         rapidxml::xml_node<> * errormessage_node = error_node->first_node("errormessage");
         rapidxml::xml_node<> * erroroffset_node = error_node->first_node("erroroffset");
-        if (errormessage_node && erroroffset_node) {
+        rapidxml::xml_node<> * textinerror_node = error_node->first_node("textinerror");
+        if (errormessage_node && erroroffset_node && textinerror) {
           request.setSEARReturnCode(4);
           std::string errormessage_str = "Error message produced by IRRSMO00: ";
           errormessage_str.append(errormessage_node->value());
-          errormessage_str.append(" at ");
+          errormessage_str.append(" at offset ");
           errormessage_str.append(erroroffset_node->value());
+          errormessage_str.append(" (");
+          errormessage_str.append(textinerror_node->value());
+          errormessage_str.append(" )");
+          throw SEARError(errormessage_str);
+        } else if (errormessage_node) {
+          request.setSEARReturnCode(4);
+          std::string errormessage_str = "Error message produced by IRRSMO00: ";
+          errormessage_str.append(errormessage_node->value());
           throw SEARError(errormessage_str);
         } else {
           request.setSEARReturnCode(8);
