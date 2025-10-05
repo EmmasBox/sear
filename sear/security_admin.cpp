@@ -44,7 +44,7 @@ void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
       SEAR_SCHEMA_VALIDATOR.validate(request_json);
     } catch (const std::exception &ex) {
       request_.setSEARReturnCode(8);
-      std::string schema_error_str;
+      std::string schema_error_str = "Invalid request schema: ";
       schema_error_str.append(ex.what());
       
       throw SEARError(schema_error_str);
