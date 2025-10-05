@@ -88,7 +88,7 @@ void XMLParser::XMLToJSON(std::string xml_string, nlohmann::json& input_json, Se
         rapidxml::xml_node<> * errormessage_node = error_node->first_node("errormessage");
         if (errormessage_node) {
           request.setSEARReturnCode(4);
-          throw SEARError("Error message produced by IRRSMO00: " + errormessage_node->value());
+          throw SEARError("Error message produced by IRRSMO00: ".append(errormessage_node->value()));
         } else {
           request.setSEARReturnCode(8);
           throw SEARError("Unable to parse XML returned by IRRSMO00");
