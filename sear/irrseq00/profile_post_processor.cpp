@@ -247,7 +247,7 @@ void ProfilePostProcessor::processGenericField(
 
 std::string ProfilePostProcessor::postProcessFieldKey(
     const std::string &admin_type, const std::string &segment,
-    const char *p_raw_field_key, const std::string encoding) {
+    const char *p_raw_field_key, const std::string &encoding) {
   std::string field_key =
       ProfilePostProcessor::postProcessKey(p_raw_field_key, 8, encoding);
   const char *sear_field_key =
