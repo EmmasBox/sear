@@ -225,6 +225,18 @@
 #define TEST_IRRSMO00_ERROR_STRUCTURE_XML \
   IRRSMO00_RESULT_SAMPLES "user/test_irrsmo00_error_structure_result.xml"
 
+#define TEST_ADD_USER_PARAMETER_ERRORS_RESULT_JSON \
+  IRRSMO00_RESULT_SAMPLES                                 \
+  "user/test_add_user_parameter_errors_result.json"
+
+#define TEST_ALTER_USER_TRAITS_NOT_JSON_ERROR_RESULT_JSON \
+  IRRSMO00_RESULT_SAMPLES                                 \
+  "user/test_alter_user_traits_not_json_error_result.json"
+
+#define TEST_DELETE_USER_WITH_TRAITS_RESULT_JSON \
+  IRRSMO00_RESULT_SAMPLES                                 \
+  "user/test_delete_user_with_traits_result.json"
+
 // Group
 #define TEST_ADD_GROUP_RESULT_JSON \
   IRRSMO00_RESULT_SAMPLES "group/test_add_group_result.json"
@@ -242,6 +254,8 @@
   "group/test_add_group_result_group_already_exists.xml"
 #define TEST_ADD_GROUP_TRAIT_ERRORS_RESULT_JSON \
   IRRSMO00_RESULT_SAMPLES "group/test_add_group_trait_errors_result.json"
+#define TEST_ADD_GROUP_PARAMETER_ERRORS_RESULT_JSON \
+  IRRSMO00_RESULT_SAMPLES "group/test_add_group_parameter_errors_result.json"
 
 // Group Connection
 #define TEST_ALTER_GROUP_CONNECTION_RESULT_JSON \
@@ -260,6 +274,10 @@
   IRRSMO00_RESULT_SAMPLES                                    \
   "group_connection/"                                        \
   "test_alter_group_connection_trait_errors_result.json"
+#define TEST_ALTER_GROUP_CONNECTION_PARAMETER_ERRORS_RESULT_JSON \
+  IRRSMO00_RESULT_SAMPLES                                    \
+  "group_connection/"                                        \
+  "test_alter_group_connection_parameter_errors_result.json"
 
 // RACF Options
 #define TEST_ALTER_RACF_OPTIONS_RESULT_JSON \
@@ -269,8 +287,11 @@
 #define TEST_ALTER_RACF_OPTIONS_TRAIT_ERRORS_RESULT_JSON \
   IRRSMO00_RESULT_SAMPLES                                \
   "racf_options/test_alter_racf_options_trait_errors_result.json"
+#define TEST_ALTER_RACF_OPTIONS_PARAMETER_ERRORS_RESULT_JSON \
+  IRRSMO00_RESULT_SAMPLES                                \
+  "racf_options/test_alter_racf_options_parameter_errors_result.json"
 
-// Data Set
+// Dataset
 #define TEST_ADD_DATASET_RESULT_JSON \
   IRRSMO00_RESULT_SAMPLES "dataset/test_add_dataset_result.json"
 #define TEST_ADD_DATASET_RESULT_XML \
@@ -289,6 +310,10 @@
   IRRSMO00_RESULT_SAMPLES                          \
   "dataset/"                                      \
   "test_add_dataset_trait_errors_result.json"
+#define TEST_ADD_DATASET_PARAMETER_ERRORS_RESULT_JSON \
+  IRRSMO00_RESULT_SAMPLES                          \
+  "dataset/"                                      \
+  "test_add_dataset_parameter_errors_result.json"
 
 // Resource
 #define TEST_ADD_RESOURCE_RESULT_JSON \
@@ -309,6 +334,11 @@
   IRRSMO00_RESULT_SAMPLES                          \
   "resource/"                                      \
   "test_add_resource_trait_errors_result.json"
+
+#define TEST_ADD_RESOURCE_PARAMETER_ERRORS_RESULT_JSON \
+  IRRSMO00_RESULT_SAMPLES                          \
+  "resource/"                                      \
+  "test_add_resource_parameter_errors_result.json"
 
 // Permission
 #define TEST_ALTER_PERMISSION_DATASET_RESULT_JSON \
@@ -332,6 +362,24 @@
 #define TEST_ALTER_PERMISSION_RESOURCE_TRAIT_ERRORS_RESULT_JSON \
   IRRSMO00_RESULT_SAMPLES                                       \
   "permission/test_alter_permission_resource_trait_errors_result.json"
+#define TEST_ALTER_PERMISSION_DATASET_PARAMETER_ERRORS_RESULT_JSON \
+  IRRSMO00_RESULT_SAMPLES                                       \
+  "permission/test_alter_permission_dataset_parameter_errors_result.json"
+#define TEST_ALTER_PERMISSION_DATASET_WITH_CLASS_PARAMETER_ERROR_RESULT_JSON \
+  IRRSMO00_RESULT_SAMPLES                                       \
+  "permission/test_alter_permission_dataset_with_class_parameter_error_result.json"
+#define TEST_ALTER_PERMISSION_RESOURCE_PARAMETER_ERRORS_RESULT_JSON \
+  IRRSMO00_RESULT_SAMPLES                                       \
+  "permission/test_alter_permission_resource_parameter_errors_result.json"
+#define TEST_ALTER_PERMISSION_RESOURCE_CLASS_SET_TO_DATASET_LOWERCASE_PARAMETER_ERROR_RESULT_JSON \
+  IRRSMO00_RESULT_SAMPLES                                       \
+  "permission/test_alter_permission_resource_class_set_to_dataset_lowercase_parameter_error_result.json"
+#define TEST_ALTER_PERMISSION_RESOURCE_CLASS_SET_TO_DATASET_UPPERCASE_PARAMETER_ERROR_RESULT_JSON \
+  IRRSMO00_RESULT_SAMPLES                                       \
+  "permission/test_alter_permission_resource_class_set_to_dataset_uppercase_parameter_error_result.json"
+#define TEST_ALTER_PERMISSION_RESOURCE_WITH_VOLUME_PARAMETER_ERROR_RESULT_JSON \
+  IRRSMO00_RESULT_SAMPLES                                       \
+  "permission/test_alter_permission_resource_with_volume_parameter_error_result.json"
 
 /*************************************************************************/
 /* Precheck Macros                                                       */
