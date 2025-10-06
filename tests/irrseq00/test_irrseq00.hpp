@@ -135,6 +135,12 @@
 #define TEST_EXTRACT_NEXT_USER_RESULT_RAW \
   IRRSEQ00_RESULT_SAMPLES "user/test_extract_next_user_result.bin"
 
+#define TEST_EXTRACT_USER_RESULT_REQUIRED_PARAMETER_MISSING_JSON \
+  IRRSEQ00_RESULT_SAMPLES "user/test_extract_user_result_required_parameter_missing.json"
+
+#define TEST_EXTRACT_USER_RESULT_EXTRANEOUS_PARAMETER_PROVIDED_JSON \
+  IRRSEQ00_RESULT_SAMPLES "user/test_extract_user_result_extraneous_parameter_provided.json"
+
 // Group
 #define TEST_EXTRACT_GROUP_RESULT_JSON \
   IRRSEQ00_RESULT_SAMPLES "group/test_extract_group_result.json"
@@ -147,6 +153,12 @@
 #define TEST_EXTRACT_GROUP_RESULT_GROUP_NOT_FOUND_JSON \
   IRRSEQ00_RESULT_SAMPLES                              \
   "group/test_extract_group_result_group_not_found.json"
+
+#define TEST_EXTRACT_GROUP_RESULT_REQUIRED_PARAMETER_MISSING_JSON \
+  IRRSEQ00_REQUEST_SAMPLES "group/test_extract_group_result_required_parameter_missing.json"
+
+#define TEST_EXTRACT_GROUP_RESULT_EXTRANEOUS_PARAMETER_PROVIDED_JSON \
+  IRRSEQ00_REQUEST_SAMPLES "group/test_extract_group_result_extraneous_parameter_provided.json"
 
 #define TEST_EXTRACT_NEXT_GROUP_RESULT_JSON \
   IRRSEQ00_RESULT_SAMPLES "group/test_extract_next_group_result.json"
@@ -165,6 +177,16 @@
   "group_connection/"                                                        \
   "test_extract_group_connection_result_group_connection_not_found.json"
 
+#define TEST_EXTRACT_GROUP_CONNECTION_RESULT_REQUIRED_PARAMETER_MISSING_JSON \
+  IRRSEQ00_REQUEST_SAMPLES                                                       \
+  "group_connection/"                                                            \
+  "test_extract_group_connection_result_required_parameter_missing.json"
+
+#define TEST_EXTRACT_GROUP_CONNECTION_RESULT_EXTRANEOUS_PARAMETER_PROVIDED_JSON \
+  IRRSEQ00_REQUEST_SAMPLES                                                       \
+  "group_connection/"                                                            \
+  "test_extract_group_connection_result_extraneous_parameter_provided.json"
+
 // Racf Options
 #define TEST_EXTRACT_RACF_OPTIONS_RESULT_JSON \
   IRRSEQ00_RESULT_SAMPLES "racf_options/test_extract_racf_options_result.json"
@@ -173,6 +195,9 @@
 #define TEST_EXTRACT_RACF_OPTIONS_RESULT_RACF_OPTIONS_NOT_FOUND_JSON \
   IRRSEQ00_RESULT_SAMPLES                                            \
   "racf_options/test_extract_racf_options_result_racf_options_not_found.json"
+#define TEST_EXTRACT_RACF_OPTIONS_RESULT_EXTRANEOUS_PARAMETER_PROVIDED_JSON \
+  IRRSEQ00_RESULT_SAMPLES                                            \
+  "racf_options/test_extract_racf_options_result_extraneous_parameter_provided.json"
 
 // Data Set
 #define TEST_EXTRACT_DATASET_RESULT_JSON \
@@ -192,6 +217,12 @@
 #define TEST_EXTRACT_NEXT_DATASET_RESULT_RAW \
   IRRSEQ00_RESULT_SAMPLES "dataset/test_extract_next_dataset_result.bin"
 
+#define TEST_EXTRACT_DATASET_RESULT_REQUIRED_PARAMETER_MISSING_JSON \
+  IRRSEQ00_RESULT_SAMPLES "dataset/test_extract_dataset_result_required_parameter_missing.json"
+
+#define TEST_EXTRACT_DATASET_RESULT_EXTRANEOUS_PARAMETER_PROVIDED_JSON \
+  IRRSEQ00_RESULT_SAMPLES "dataset/test_extract_dataset_result_extraneous_parameter_provided.json"
+
 // Resource
 #define TEST_EXTRACT_RESOURCE_RESULT_JSON \
   IRRSEQ00_RESULT_SAMPLES "resource/test_extract_resource_result.json"
@@ -204,6 +235,12 @@
 #define TEST_EXTRACT_RESOURCE_RESULT_RESOURCE_NOT_FOUND_JSON \
   IRRSEQ00_RESULT_SAMPLES                                    \
   "resource/test_extract_resource_result_resource_not_found.json"
+#define TEST_EXTRACT_RESULT_REQUEST_REQUIRED_PARAMETER_MISSING_JSON \
+  IRRSEQ00_RESULT_SAMPLES                                    \
+  "resource/test_extract_result_request_required_parameter_missing.json"
+#define TEST_EXTRACT_RESULT_REQUEST_EXTRANEOUS_PARAMETER_PROVIDED_JSON \
+  IRRSEQ00_RESULT_SAMPLES                                    \
+  "resource/test_extract_result_request_extraneous_parameter_provided.json"
 
 #define TEST_EXTRACT_NEXT_RESOURCE_RESULT_JSON \
   IRRSEQ00_RESULT_SAMPLES "resource/test_extract_next_resource_result.json"

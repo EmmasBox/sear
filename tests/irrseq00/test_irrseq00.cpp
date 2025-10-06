@@ -42,13 +42,13 @@ void test_parse_extract_user_result_user_not_found() {
 void test_parse_extract_user_result_required_parameter_missing() {
   test_validation_errors(
       TEST_EXTRACT_USER_REQUEST_REQUIRED_PARAMETER_MISSING_JSON,
-      TEST_PARAMETER_VALIDATION_ERROR_RESULT_JSON, false);
+      TEST_EXTRACT_USER_RESULT_REQUIRED_PARAMETER_MISSING_JSON, false);
 }
 
 void test_parse_extract_user_result_extraneous_parameter_provided() {
   test_validation_errors(
       TEST_EXTRACT_USER_REQUEST_EXTRANEOUS_PARAMETER_PROVIDED_JSON,
-      TEST_PARAMETER_VALIDATION_ERROR_RESULT_JSON, false);
+      TEST_EXTRACT_USER_RESULT_EXTRANEOUS_PARAMETER_PROVIDED_JSON, false);
 }
 
 void test_parse_extract_user_result_pseudo_boolean() {
@@ -98,13 +98,13 @@ void test_parse_extract_group_result_group_not_found() {
 void test_parse_extract_group_result_required_parameter_missing() {
   test_validation_errors(
       TEST_EXTRACT_GROUP_REQUEST_REQUIRED_PARAMETER_MISSING_JSON,
-      TEST_PARAMETER_VALIDATION_ERROR_RESULT_JSON, false);
+      TEST_EXTRACT_GROUP_RESULT_REQUIRED_PARAMETER_MISSING_JSON, false);
 }
 
 void test_parse_extract_group_result_extraneous_parameter_provided() {
   test_validation_errors(
       TEST_EXTRACT_GROUP_REQUEST_EXTRANEOUS_PARAMETER_PROVIDED_JSON,
-      TEST_PARAMETER_VALIDATION_ERROR_RESULT_JSON, false);
+      TEST_EXTRACT_GROUP_RESULT_EXTRANEOUS_PARAMETER_PROVIDED_JSON, false);
 }
 
 void test_generate_extract_next_group_request() {
@@ -144,13 +144,13 @@ void test_parse_extract_group_connection_result_group_connection_not_found() {
 void test_parse_extract_group_connection_result_required_parameter_missing() {
   test_validation_errors(
       TEST_EXTRACT_GROUP_CONNECTION_REQUEST_REQUIRED_PARAMETER_MISSING_JSON,
-      TEST_PARAMETER_VALIDATION_ERROR_RESULT_JSON, false);
+      TEST_EXTRACT_GROUP_CONNECTION_RESULT_REQUIRED_PARAMETER_MISSING_JSON, false);
 }
 
 void test_parse_extract_group_connection_result_extraneous_parameter_provided() {
   test_validation_errors(
       TEST_EXTRACT_GROUP_CONNECTION_REQUEST_EXTRANEOUS_PARAMETER_PROVIDED_JSON,
-      TEST_PARAMETER_VALIDATION_ERROR_RESULT_JSON, false);
+      TEST_EXTRACT_GROUP_CONNECTION_RESULT_EXTRANEOUS_PARAMETER_PROVIDED_JSON, false);
 }
 
 /*************************************************************************/
@@ -179,7 +179,7 @@ void test_parse_extract_racf_options_result_racf_options_not_found() {
 void test_parse_extract_racf_options_result_extraneous_parameter_provided() {
   test_validation_errors(
       TEST_EXTRACT_RACF_OPTIONS_REQUEST_EXTRANEOUS_PARAMETER_PROVIDED_JSON,
-      TEST_PARAMETER_VALIDATION_ERROR_RESULT_JSON, false);
+      TEST_EXTRACT_RACF_OPTIONS_RESULT_EXTRANEOUS_PARAMETER_PROVIDED_JSON, false);
 }
 
 /*************************************************************************/
@@ -212,13 +212,13 @@ void test_parse_extract_dataset_result_dataset_not_found() {
 void test_parse_extract_dataset_result_required_parameter_missing() {
   test_validation_errors(
       TEST_EXTRACT_DATASET_REQUEST_REQUIRED_PARAMETER_MISSING_JSON,
-      TEST_PARAMETER_VALIDATION_ERROR_RESULT_JSON, false);
+      TEST_EXTRACT_DATASET_RESULT_REQUIRED_PARAMETER_MISSING_JSON, false);
 }
 
 void test_parse_extract_dataset_result_extraneous_parameter_provided() {
   test_validation_errors(
       TEST_EXTRACT_DATASET_REQUEST_EXTRANEOUS_PARAMETER_PROVIDED_JSON,
-      TEST_PARAMETER_VALIDATION_ERROR_RESULT_JSON, false);
+      TEST_EXTRACT_DATASET_RESULT_EXTRANEOUS_PARAMETER_PROVIDED_JSON, false);
 }
 
 void test_generate_extract_next_dataset_request() {
@@ -269,13 +269,13 @@ void test_parse_extract_resource_result_resource_not_found() {
 void test_parse_extract_resource_result_required_parameter_missing() {
   test_validation_errors(
       TEST_EXTRACT_RESOURCE_REQUEST_REQUIRED_PARAMETER_MISSING_JSON,
-      TEST_PARAMETER_VALIDATION_ERROR_RESULT_JSON, false);
+      TEST_EXTRACT_RESULT_REQUEST_REQUIRED_PARAMETER_MISSING_JSON, false);
 }
 
 void test_parse_extract_resource_result_extraneous_parameter_provided() {
   test_validation_errors(
       TEST_EXTRACT_RESOURCE_REQUEST_EXTRANEOUS_PARAMETER_PROVIDED_JSON,
-      TEST_PARAMETER_VALIDATION_ERROR_RESULT_JSON, false);
+      TEST_EXTRACT_RESULT_REQUEST_EXTRANEOUS_PARAMETER_PROVIDED_JSON, false);
 }
 
 void test_generate_extract_next_resource_request() {
