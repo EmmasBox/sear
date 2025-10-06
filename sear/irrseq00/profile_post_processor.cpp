@@ -107,7 +107,7 @@ void ProfilePostProcessor::postProcessGeneric(SecurityRequest &request) {
   request.setIntermediateResultJSON(profile);
 }
 
-void ProfilePostProcessor::postProcessSearchGeneric(SecurityRequest &request, const std::string encoding) {
+void ProfilePostProcessor::postProcessSearchGeneric(SecurityRequest &request, const std::string &encoding) {
   nlohmann::json profiles;
 
   std::vector<std::string> repeat_group_profiles;
@@ -127,7 +127,7 @@ void ProfilePostProcessor::postProcessSearchGeneric(SecurityRequest &request, co
   request.setIntermediateResultJSON(profiles);
 }
 
-void ProfilePostProcessor::postProcessRACFOptions(SecurityRequest &request, const std::string encoding) {
+void ProfilePostProcessor::postProcessRACFOptions(SecurityRequest &request, const std::string &encoding) {
   nlohmann::json profile;
   profile["profile"] = nlohmann::json::object();
 
@@ -209,7 +209,7 @@ void ProfilePostProcessor::postProcessRACFOptions(SecurityRequest &request, cons
 
 void ProfilePostProcessor::processGenericField(
     nlohmann::json &json_field, const generic_field_descriptor_t *p_field,
-    const char *p_profile, const char sear_field_type, const std::string encoding) {
+    const char *p_profile, const char sear_field_type, const std::string &encoding) {
   if (ntohs(p_field->type) & t_boolean_field) {
     // Post Process Boolean Fields
     if (ntohl(p_field->flags) & f_boolean_field) {
@@ -247,7 +247,7 @@ void ProfilePostProcessor::processGenericField(
 
 std::string ProfilePostProcessor::postProcessFieldKey(
     const std::string &admin_type, const std::string &segment,
-    const char *p_raw_field_key, const std::string encoding) {
+    const char *p_raw_field_key, const std::string &encoding) {
   std::string field_key =
       ProfilePostProcessor::postProcessKey(p_raw_field_key, 8, encoding);
   const char *sear_field_key =
@@ -264,7 +264,7 @@ std::string ProfilePostProcessor::postProcessFieldKey(
 }
 
 std::string ProfilePostProcessor::postProcessKey(const char *p_source_key,
-                                                 int length, const std::string encoding) {
+                                                 int length, const std::string &encoding) {
   std::string post_processed_key =
       ProfilePostProcessor::decodeEBCDICBytes(p_source_key, length, encoding);
   // Convert to lowercase
@@ -275,7 +275,7 @@ std::string ProfilePostProcessor::postProcessKey(const char *p_source_key,
 }
 
 std::string ProfilePostProcessor::decodeEBCDICBytes(const char *p_ebcdic_bytes,
-                                                    int length, const std::string encoding) {
+                                                    int length, const std::string &encoding) {
   auto ebcdic_bytes_unique_ptr          = std::make_unique<char[]>(length);
   ebcdic_bytes_unique_ptr.get()[length] = 0;
   // Decode bytes

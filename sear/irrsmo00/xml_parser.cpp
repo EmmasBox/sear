@@ -25,6 +25,7 @@ nlohmann::json XMLParser::buildJSONString(SecurityRequest& request) {
   int raw_result_length    = request.getRawResultLength();
 
   auto xml_ebcdic_result_unique_ptr =
+
       std::make_unique<char[]>(raw_result_length + 1);
   std::memset(xml_ebcdic_result_unique_ptr.get(), 0, raw_result_length + 1);
 
