@@ -20,11 +20,6 @@
 #define TEST_IRRSEQ00_RACF_OPTIONS_ARG_AREA_SIZE 1316
 #define TEST_IRRSDL00_KEYRING_ARG_AREA_SIZE 1310
 
-// This result sample is used in several places.
-#define TEST_PARAMETER_VALIDATION_ERROR_RESULT_JSON \
-  "./tests/validation/result_samples/"              \
-  "test_parameter_validation_error_result.json"
-
 // Common
 char *get_sample(const char *filename, const char *mode);
 char *get_raw_sample(const char *filename);
