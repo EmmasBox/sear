@@ -43,7 +43,7 @@
   IRRSDL00_RESULT_SAMPLES                                 \
   "keyring/test_extract_keyring_result_keyring_not_found.bin"
 
-#define TEST_EXTRACT_KEYRING_REQUEST_REQUIRED_PARAMETER_MISSING_JSON \
+#define TEST_EXTRACT_KEYRING_RESULT_REQUIRED_PARAMETER_MISSING_JSON \
   IRRSDL00_REQUEST_SAMPLES                                           \
   "keyring/test_extract_keyring_result_required_parameter_missing.json"
 
