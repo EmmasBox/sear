@@ -1,0 +1,11 @@
+{
+  "errors": [
+    "sear: Invalid request schema: At  of {\"admin_type\":\"junk_admin\",\"operation\":\"junk_operation\"} - no subschema has succeeded, but one of them is required to validate\n"
+  ],
+  "return_codes": {
+    "racf_reason_code": null,
+    "racf_return_code": null,
+    "saf_return_code": null,
+    "sear_return_code": 8
+  }
+}

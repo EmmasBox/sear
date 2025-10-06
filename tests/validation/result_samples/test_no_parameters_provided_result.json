@@ -1,6 +1,6 @@
 {
   "errors": [
-    "sear: The provided request JSON does not contain a valid request"
+    "sear: Invalid request schema: At  of {} - no subschema has succeeded, but one of them is required to validate\n"
   ],
   "return_codes": {
     "racf_reason_code": null,
