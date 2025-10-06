@@ -5,9 +5,9 @@
 #include <cstring>
 #include <string>
 
-#include "../../sear/sear.h"
-#include "../unity/unity.h"
-#include "../unit_test_utilities.hpp"
+#include "sear/sear.h"
+#include "tests/unity/unity.h"
+#include "tests/unit_test_utilities.hpp"
 
 void test_handle_syntax_error() {
   char *request_json = get_sample(TEST_SYNTAX_ERROR_REQUEST_JSON, "r");
