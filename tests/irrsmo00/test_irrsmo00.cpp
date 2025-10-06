@@ -1,13 +1,13 @@
-#include "tests/irrsmo00/test_irrsmo00.hpp"
+#include "../irrsmo00/test_irrsmo00.hpp"
 
 #include <sys/stat.h>
 
 #include <cstring>
 
 #include "sear/sear.h"
-#include "tests/mock/irrsmo64.hpp"
-#include "tests/unit_test_utilities.hpp"
-#include "tests/unity/unity.h"
+#include "../mock/irrsmo64.hpp"
+#include "../unit_test_utilities.hpp"
+#include "../unity/unity.h"
 
 /*************************************************************************/
 /* User                                                                  */
