@@ -2,7 +2,7 @@
 
 #include <sys/stat.h>
 
-#include <string>
+#include <cstring>
 
 #include "sear/sear.h"
 #include "tests/unit_test_utilities.hpp"
