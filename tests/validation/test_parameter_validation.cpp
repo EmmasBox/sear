@@ -2,7 +2,6 @@
 
 #include <sys/stat.h>
 
-#include <cstring>
 #include <string>
 
 #include "sear/sear.h"
