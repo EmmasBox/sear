@@ -155,10 +155,10 @@
   "group/test_extract_group_result_group_not_found.json"
 
 #define TEST_EXTRACT_GROUP_RESULT_REQUIRED_PARAMETER_MISSING_JSON \
-  IRRSEQ00_REQUEST_SAMPLES "group/test_extract_group_result_required_parameter_missing.json"
+  IRRSEQ00_RESULT_SAMPLES "group/test_extract_group_result_required_parameter_missing.json"
 
 #define TEST_EXTRACT_GROUP_RESULT_EXTRANEOUS_PARAMETER_PROVIDED_JSON \
-  IRRSEQ00_REQUEST_SAMPLES "group/test_extract_group_result_extraneous_parameter_provided.json"
+  IRRSEQ00_RESULT_SAMPLES "group/test_extract_group_result_extraneous_parameter_provided.json"
 
 #define TEST_EXTRACT_NEXT_GROUP_RESULT_JSON \
   IRRSEQ00_RESULT_SAMPLES "group/test_extract_next_group_result.json"
@@ -178,12 +178,12 @@
   "test_extract_group_connection_result_group_connection_not_found.json"
 
 #define TEST_EXTRACT_GROUP_CONNECTION_RESULT_REQUIRED_PARAMETER_MISSING_JSON \
-  IRRSEQ00_REQUEST_SAMPLES                                                       \
+  IRRSEQ00_RESULT_SAMPLES                                                       \
   "group_connection/"                                                            \
   "test_extract_group_connection_result_required_parameter_missing.json"
 
 #define TEST_EXTRACT_GROUP_CONNECTION_RESULT_EXTRANEOUS_PARAMETER_PROVIDED_JSON \
-  IRRSEQ00_REQUEST_SAMPLES                                                       \
+  IRRSEQ00_RESULT_SAMPLES                                                       \
   "group_connection/"                                                            \
   "test_extract_group_connection_result_extraneous_parameter_provided.json"
 
