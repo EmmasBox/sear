@@ -6,7 +6,6 @@
 #include <string>
 
 #include "sear/sear.h"
-#include "tests/unit_test_utilities.hpp"
 #include "tests/unity/unity.h"
 #include "../unit_test_utilities.hpp"
 
