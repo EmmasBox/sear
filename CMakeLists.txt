@@ -234,7 +234,6 @@ add_custom_target(check ALL
                 "-I${CMAKE_CURRENT_SOURCE_DIR}/sear/key_map"
                 "-I${CMAKE_CURRENT_SOURCE_DIR}/sear/validation"
                 "-I${CMAKE_CURRENT_SOURCE_DIR}/tests/zoslib"
-                "-I${CMAKE_CURRENT_SOURCE_DIR}/externals/rapidxml"
                 "-I${CMAKE_CURRENT_BINARY_DIR}/sear"
                 "${CMAKE_CURRENT_SOURCE_DIR}/sear"
 )
