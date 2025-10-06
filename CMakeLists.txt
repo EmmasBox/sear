@@ -221,7 +221,6 @@ add_custom_target(check ALL
                 "--std=c++${CXX_STANDARD}"
                 "--enable=all"
                 "--force"
-                "--fsanitize=address"
                 "--check-level=exhaustive"
                 "--inconclusive"
                 "--error-exitcode=1"
