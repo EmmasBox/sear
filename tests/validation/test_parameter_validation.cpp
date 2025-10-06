@@ -3,6 +3,7 @@
 #include <sys/stat.h>
 
 #include <cstring>
+#include <string>
 
 #include "sear/sear.h"
 #include "tests/unit_test_utilities.hpp"
