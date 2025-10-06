@@ -31,7 +31,7 @@ void test_parse_extract_keyring_result_keyring_not_found() {
 void test_parse_extract_keyring_result_required_parameter_missing() {
   test_validation_errors(
       TEST_EXTRACT_KEYRING_REQUEST_REQUIRED_PARAMETER_MISSING_JSON,
-      TEST_PARAMETER_VALIDATION_ERROR_RESULT_JSON, false);
+      TEST_EXTRACT_KEYRING_REQUEST_REQUIRED_PARAMETER_MISSING_JSON, false);
 }
 
 void test_generate_add_keyring_request() {
