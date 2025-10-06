@@ -24,19 +24,19 @@ nlohmann::json XMLParser::buildJSONString(SecurityRequest& request) {
   const char* p_raw_result = request.getRawResultPointer();
   int raw_result_length    = request.getRawResultLength();
 
-  auto xml_ascii_result_unique_ptr =
+  auto xml_ebcdic_result_unique_ptr =
       std::make_unique<char[]>(raw_result_length + 1);
-  std::memset(xml_ascii_result_unique_ptr.get(), 0, raw_result_length + 1);
+  std::memset(xml_ebcdic_result_unique_ptr.get(), 0, raw_result_length + 1);
 
   // Build a JSON string from the XML result string, SMO return and Reason
   // Codes
   Logger::getInstance().debug("Raw EBCDIC encoded result XML:");
   Logger::getInstance().hexDump(p_raw_result, raw_result_length);
 
-  std::memcpy(xml_ascii_result_unique_ptr.get(), p_raw_result,
+  std::memcpy(xml_ebcdic_result_unique_ptr.get(), p_raw_result,
               raw_result_length);
 
-  std::string ebcdic_string = std::string(xml_ascii_result_unique_ptr.get());
+  std::string ebcdic_string = std::string(xml_ebcdic_result_unique_ptr.get());
 
   xml_buffer = toUTF8(ebcdic_string, "IBM-1047");
 
