@@ -1,11 +1,11 @@
-#include "tests/irrsdl00/test_irrsdl00.hpp"
+#include "../irrsdl00/test_irrsdl00.hpp"
 
 #include <arpa/inet.h>
 #include <sys/stat.h>
 
 #include <cstring>
 
-#include "tests/unit_test_utilities.hpp"
+#include "../unit_test_utilities.hpp"
 
 /*************************************************************************/
 /* Keyring                                                               */
