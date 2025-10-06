@@ -12,10 +12,10 @@
           "const": "user"
         },
         "userid_filter": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -33,10 +33,10 @@
           "const": "user"
         },
         "userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -57,16 +57,16 @@
           "const": "user"
         },
         "userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "traits": {
           "type": "object"
         },
         "run_as_userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -87,16 +87,16 @@
           "const": "user"
         },
         "userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "traits": {
           "type": "object"
         },
         "run_as_userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -116,13 +116,13 @@
           "const": "user"
         },
         "userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "run_as_userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -141,10 +141,10 @@
           "const": "group"
         },
         "group_filter": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -162,10 +162,10 @@
           "const": "group"
         },
         "group": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -186,16 +186,16 @@
           "const": "group"
         },
         "group": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "traits": {
           "type": "object"
         },
         "run_as_userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -216,16 +216,16 @@
           "const": "group"
         },
         "group": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "traits": {
           "type": "object"
         },
         "run_as_userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -245,13 +245,13 @@
           "const": "group"
         },
         "group": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "run_as_userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -270,13 +270,13 @@
           "const": "group-connection"
         },
         "userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "group": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -296,19 +296,19 @@
           "const": "group-connection"
         },
         "userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "group": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "traits": {
           "type": "object"
         },
         "run_as_userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -328,16 +328,16 @@
           "const": "group-connection"
         },
         "userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "group": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "run_as_userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -357,13 +357,13 @@
           "const": "resource"
         },
         "resource_filter": {
-          "$ref": "#/$defs/resourceName"
+          "$ref": "#/definitions/resourceName"
         },
         "class": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -382,13 +382,13 @@
           "const": "resource"
         },
         "resource": {
-          "$ref": "#/$defs/resourceName"
+          "$ref": "#/definitions/resourceName"
         },
         "class": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -410,19 +410,19 @@
           "const": "resource"
         },
         "resource": {
-          "$ref": "#/$defs/resourceName"
+          "$ref": "#/definitions/resourceName"
         },
         "class": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "traits": {
           "type": "object"
         },
         "run_as_userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -444,19 +444,19 @@
           "const": "resource"
         },
         "resource": {
-          "$ref": "#/$defs/resourceName"
+          "$ref": "#/definitions/resourceName"
         },
         "class": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "traits": {
           "type": "object"
         },
         "run_as_userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -477,16 +477,16 @@
           "const": "resource"
         },
         "resource": {
-          "$ref": "#/$defs/resourceName"
+          "$ref": "#/definitions/resourceName"
         },
         "class": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "run_as_userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -506,10 +506,10 @@
           "const": "dataset"
         },
         "dataset_filter": {
-          "$ref": "#/$defs/dataSetName"
+          "$ref": "#/definitions/dataSetName"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -527,10 +527,10 @@
           "const": "dataset"
         },
         "dataset": {
-          "$ref": "#/$defs/dataSetName"
+          "$ref": "#/definitions/dataSetName"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -551,10 +551,10 @@
           "const": "dataset"
         },
         "dataset": {
-          "$ref": "#/$defs/dataSetName"
+          "$ref": "#/definitions/dataSetName"
         },
         "volume": {
-          "$ref": "#/$defs/volumeSerial"
+          "$ref": "#/definitions/volumeSerial"
         },
         "generic": {
           "type": "boolean"
@@ -563,10 +563,10 @@
           "type": "object"
         },
         "run_as_userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -587,10 +587,10 @@
           "const": "dataset"
         },
         "dataset": {
-          "$ref": "#/$defs/dataSetName"
+          "$ref": "#/definitions/dataSetName"
         },
         "volume": {
-          "$ref": "#/$defs/volumeSerial"
+          "$ref": "#/definitions/volumeSerial"
         },
         "generic": {
           "type": "boolean"
@@ -599,10 +599,10 @@
           "type": "object"
         },
         "run_as_userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -622,16 +622,16 @@
           "const": "dataset"
         },
         "dataset": {
-          "$ref": "#/$defs/dataSetName"
+          "$ref": "#/definitions/dataSetName"
         },
         "volume": {
-          "$ref": "#/$defs/volumeSerial"
+          "$ref": "#/definitions/volumeSerial"
         },
         "generic": {
           "type": "boolean"
         },
         "run_as_userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         }
       },
       "required": [
@@ -668,7 +668,7 @@
           "type": "object"
         },
         "run_as_userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         }
       },
       "required": [
@@ -687,25 +687,25 @@
           "const": "permission"
         },
         "resource": {
-          "$ref": "#/$defs/resourceName"
+          "$ref": "#/definitions/resourceName"
         },
         "class": {
-          "$ref": "#/$defs/classNamePermission"
+          "$ref": "#/definitions/classNamePermission"
         },
         "userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "group": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "traits": {
           "type": "object"
         },
         "run_as_userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -738,16 +738,16 @@
           "const": "permission"
         },
         "dataset": {
-          "$ref": "#/$defs/dataSetName"
+          "$ref": "#/definitions/dataSetName"
         },
         "userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "group": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "volume": {
-          "$ref": "#/$defs/volumeSerial"
+          "$ref": "#/definitions/volumeSerial"
         },
         "generic": {
           "type": "boolean"
@@ -756,10 +756,10 @@
           "type": "object"
         },
         "run_as_userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -791,22 +791,22 @@
           "const": "permission"
         },
         "resource": {
-          "$ref": "#/$defs/resourceName"
+          "$ref": "#/definitions/resourceName"
         },
         "class": {
-          "$ref": "#/$defs/classNamePermission"
+          "$ref": "#/definitions/classNamePermission"
         },
         "userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "group": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "run_as_userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -838,25 +838,25 @@
           "const": "permission"
         },
         "dataset": {
-          "$ref": "#/$defs/dataSetName"
+          "$ref": "#/definitions/dataSetName"
         },
         "userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "group": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "volume": {
-          "$ref": "#/$defs/volumeSerial"
+          "$ref": "#/definitions/volumeSerial"
         },
         "generic": {
           "type": "boolean"
         },
         "run_as_userid": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -887,13 +887,13 @@
           "const": "keyring"
         },
         "owner": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "keyring": {
-          "$ref": "#/$defs/twohundredthirtysevenCharacterString"
+          "$ref": "#/definitions/twohundredthirtysevenCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -915,13 +915,13 @@
           "const": "keyring"
         },
         "owner": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "keyring": {
-          "$ref": "#/$defs/twohundredthirtysevenCharacterString"
+          "$ref": "#/definitions/twohundredthirtysevenCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -940,16 +940,16 @@
           "const": "certificate"
         },
         "owner": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "keyring": {
-          "$ref": "#/$defs/twohundredthirtysevenCharacterString"
+          "$ref": "#/definitions/twohundredthirtysevenCharacterString"
         },
         "keyring_owner": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "label": {
-          "$ref": "#/$defs/thirtytwoCharacterString"
+          "$ref": "#/definitions/thirtytwoCharacterString"
         },
         "certificate_file": {
           "type": "string"
@@ -984,7 +984,7 @@
           ]
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -1007,19 +1007,19 @@
           "const": "certificate"
         },
         "owner": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "keyring": {
-          "$ref": "#/$defs/twohundredthirtysevenCharacterString"
+          "$ref": "#/definitions/twohundredthirtysevenCharacterString"
         },
         "keyring_owner": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "label": {
-          "$ref": "#/$defs/thirtytwoCharacterString"
+          "$ref": "#/definitions/thirtytwoCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -1040,19 +1040,19 @@
           "const": "certificate"
         },
         "owner": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "keyring": {
-          "$ref": "#/$defs/twohundredthirtysevenCharacterString"
+          "$ref": "#/definitions/twohundredthirtysevenCharacterString"
         },
         "keyring_owner": {
-          "$ref": "#/$defs/eightCharacterString"
+          "$ref": "#/definitions/eightCharacterString"
         },
         "label": {
-          "$ref": "#/$defs/thirtytwoCharacterString"
+          "$ref": "#/definitions/thirtytwoCharacterString"
         },
         "encoding": {
-          "$ref": "#/$defs/encoding"
+          "$ref": "#/definitions/encodingName"
         }
       },
       "required": [
@@ -1065,7 +1065,7 @@
       ]
     }
   ],
-  "$defs": {
+  "definitions": {
     "eightCharacterString": {
       "type": "string",
       "minLength": 1,
@@ -1107,7 +1107,7 @@
       "minLength": 1,
       "maxLength": 6
     },
-    "encoding": {
+    "encodingName": {
       "type": "string",
       "minLength": 4,
       "maxLength": 9
