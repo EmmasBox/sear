@@ -107,7 +107,7 @@ void ProfilePostProcessor::postProcessGeneric(SecurityRequest &request) {
   request.setIntermediateResultJSON(profile);
 }
 
-void ProfilePostProcessor::postProcessSearchGeneric(SecurityRequest &request, const std::string encoding) {
+void ProfilePostProcessor::postProcessSearchGeneric(SecurityRequest &request, const std::string &encoding) {
   nlohmann::json profiles;
 
   std::vector<std::string> repeat_group_profiles;
@@ -127,7 +127,7 @@ void ProfilePostProcessor::postProcessSearchGeneric(SecurityRequest &request, co
   request.setIntermediateResultJSON(profiles);
 }
 
-void ProfilePostProcessor::postProcessRACFOptions(SecurityRequest &request, const std::string encoding) {
+void ProfilePostProcessor::postProcessRACFOptions(SecurityRequest &request, const std::string &encoding) {
   nlohmann::json profile;
   profile["profile"] = nlohmann::json::object();
 
