@@ -224,6 +224,7 @@ add_custom_target(check ALL
                 "--check-level=exhaustive"
                 "--inconclusive"
                 "--error-exitcode=1"
+                "-fsanitize=address"
                 "-D __ptr32="
                 "-D _POSIX_C_SOURCE=200112L"
                 "-I${CMAKE_CURRENT_SOURCE_DIR}/sear"
