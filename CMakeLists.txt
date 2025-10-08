@@ -109,6 +109,7 @@ target_include_directories(
     externals/json
     externals/iconv
     externals/rapidxml
+    externals/compat
     externals/valijson
     # tests/zoslib include directory only needed on Linux build
     "${ZOSLIB_INCLUDE}"
@@ -177,6 +178,7 @@ target_include_directories(
     externals/json
     externals/iconv
     externals/rapidxml
+    externals/compat
     externals/valijson
     tests/irrsdl00
     tests/zoslib
@@ -275,6 +277,7 @@ target_include_directories(
     externals/json
     externals/iconv
     externals/rapidxml
+    externals/compat
     externals/valijon
     tests/irrsdl00
     tests/zoslib

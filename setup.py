@@ -109,6 +109,7 @@ def main():
                         "externals/json",
                         "externals/iconv",
                         "externals/rapidxml",
+                        "externals/compat",
                         "externals/valijson",
                         os.environ["ZOPEN_ROOTFS"] + "/usr/local/include",
                     ]
