@@ -278,7 +278,7 @@ target_include_directories(
     externals/iconv
     externals/rapidxml
     externals/compat
-    externals/valijon
+    externals/valijson
     tests/irrsdl00
     tests/zoslib
     "${CMAKE_CURRENT_BINARY_DIR}/sear"
