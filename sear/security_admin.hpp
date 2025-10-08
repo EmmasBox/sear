@@ -16,7 +16,6 @@
 #include "security_request.hpp"
 
 namespace SEAR {
-static const nlohmann::json SEAR_SCHEMA_JSON = SEAR_SCHEMA;
 
 class SecurityAdmin {
  private:
