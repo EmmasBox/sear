@@ -35,7 +35,7 @@ bool SecurityAdmin::jsonValidator(nlohmann::json request_json, nlohmann::json in
   valijson::adapters::NlohmannJsonAdapter schemaAdapter(input_schema);
   try {
       parser.populateSchema(schemaAdapter, schema);
-  } catch (std::exception &e) {
+  } catch (const std::exception &e) {
       return false;
   }
 
