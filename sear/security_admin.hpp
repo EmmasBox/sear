@@ -26,7 +26,6 @@ class SecurityAdmin {
   void doAddCertificate(KeyringModifier &modifier);
   void doDeleteCertificate(KeyringModifier &modifier);
   void doRemoveCertificate(KeyringModifier &modifier);
-  bool jsonValidator(nlohmann::json request_json, nlohmann::json input_schema);
 
  public:
   SecurityAdmin(sear_result_t *p_result, bool debug);
