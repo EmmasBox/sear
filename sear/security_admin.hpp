@@ -2,8 +2,11 @@
 #define __SEAR_SECURITY_ADMIN_H_
 
 #include <cstdint>
-#include <nlohmann/json-schema.hpp>
 #include <nlohmann/json.hpp>
+#include <valijson/schema.hpp>
+#include <valijson/schema_parser.hpp>
+#include <valijson/validator.hpp>
+#include <valijson/adapters/nlohmann_json_adapter.hpp>
 
 #include "extractor.hpp"
 #include "keyring_modifier.hpp"
@@ -14,8 +17,6 @@
 
 namespace SEAR {
 static const nlohmann::json SEAR_SCHEMA_JSON = SEAR_SCHEMA;
-static const nlohmann::json_schema::json_validator SEAR_SCHEMA_VALIDATOR{
-    SEAR_SCHEMA_JSON};
 
 class SecurityAdmin {
  private:
@@ -26,6 +27,7 @@ class SecurityAdmin {
   void doAddCertificate(KeyringModifier &modifier);
   void doDeleteCertificate(KeyringModifier &modifier);
   void doRemoveCertificate(KeyringModifier &modifier);
+  bool jsonValidator(nlohmann::json request_json, nlohmann::json input_schema);
 
  public:
   SecurityAdmin(sear_result_t *p_result, bool debug);

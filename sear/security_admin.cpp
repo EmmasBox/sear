@@ -4,6 +4,10 @@
 
 #include <memory>
 #include <stdexcept>
+#include <valijson/schema.hpp>
+#include <valijson/schema_parser.hpp>
+#include <valijson/validator.hpp>
+#include <valijson/adapters/nlohmann_json_adapter.hpp>
 
 #include "irrsmo00.hpp"
 #include "irrsmo00_error.hpp"
@@ -15,11 +19,35 @@
 #include "sear_error.hpp"
 #include "xml_generator.hpp"
 #include "xml_parser.hpp"
+#include "sear_schema.hpp"
 
 namespace SEAR {
 SecurityAdmin::SecurityAdmin(sear_result_t *p_result, bool debug) {
   Logger::getInstance().setDebug(debug);
   request_ = SecurityRequest(p_result);
+}
+
+bool SecurityAdmin::jsonValidator(nlohmann::json request_json, nlohmann::json input_schema) {
+
+  // Parse the json schema into an internal schema format
+  valijson::Schema schema;
+  valijson::SchemaParser parser;
+  valijson::adapters::NlohmannJsonAdapter schemaAdapter(input_schema);
+  try {
+      parser.populateSchema(schemaAdapter, schema);
+  } catch (std::exception &e) {
+      return false;
+  }
+
+  valijson::ValidationResults results;
+  valijson::adapters::NlohmannJsonAdapter targetAdapter(request_json);
+  valijson::Validator validator(valijson::Validator::kStrongTypes);
+
+  if (validator.validate(schema, targetAdapter, &results)) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
@@ -41,7 +69,7 @@ void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
 
     Logger::getInstance().debug("Validating parameters ...");
     try {
-      SEAR_SCHEMA_VALIDATOR.validate(request_json);
+      jsonValidator(request_json, SEAR_SCHEMA);
     } catch (const std::exception &ex) {
       request_.setSEARReturnCode(8);
       std::string schema_error_str = "Invalid request schema: ";

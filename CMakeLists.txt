@@ -96,13 +96,6 @@ add_library(
     sear/security_admin.cpp
     sear/security_request.cpp
     sear/conversion.cpp
-
-    externals/json-schema-validator/json-patch.cpp
-    externals/json-schema-validator/json-schema-draft7.json.cpp
-    externals/json-schema-validator/json-uri.cpp
-    externals/json-schema-validator/json-validator.cpp
-    externals/json-schema-validator/smtp-address-validator.cpp
-    externals/json-schema-validator/string-format-check.cpp
 )
 # SEAR's include directories
 target_include_directories(
@@ -114,9 +107,9 @@ target_include_directories(
     sear/key_map
     sear/validation
     externals/json
-    externals/json-schema-validator
     externals/iconv
     externals/rapidxml
+    externals/valijson
     # tests/zoslib include directory only needed on Linux build
     "${ZOSLIB_INCLUDE}"
     # add generated header to include path
@@ -182,9 +175,9 @@ target_include_directories(
     sear/key_map
     sear/validation
     externals/json
-    externals/json-schema-validator
     externals/iconv
     externals/rapidxml
+    externals/valijson
     tests/irrsdl00
     tests/zoslib
 )
@@ -268,13 +261,6 @@ add_executable(
     sear/security_admin.cpp
     sear/security_request.cpp
     sear/conversion.cpp
-
-    externals/json-schema-validator/json-patch.cpp
-    externals/json-schema-validator/json-schema-draft7.json.cpp
-    externals/json-schema-validator/json-uri.cpp
-    externals/json-schema-validator/json-validator.cpp
-    externals/json-schema-validator/smtp-address-validator.cpp
-    externals/json-schema-validator/string-format-check.cpp
 )
 # fuzz's include directories
 target_include_directories(
@@ -287,9 +273,9 @@ target_include_directories(
     sear/key_map
     sear/validation
     externals/json
-    externals/json-schema-validator
     externals/iconv
     externals/rapidxml
+    externals/valijon
     tests/irrsdl00
     tests/zoslib
     "${CMAKE_CURRENT_BINARY_DIR}/sear"
