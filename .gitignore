@@ -44,6 +44,8 @@
 
 # Build directories
 cmake-build
+CMakeFiles
+CMakeCache.txt
 
 ## Python related ignore statements
 
