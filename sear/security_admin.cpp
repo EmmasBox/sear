@@ -1,6 +1,8 @@
 #include "security_admin.hpp"
 
 #include <arpa/inet.h>
+#include <exception>
+#include <stdexcept>
 
 #include <memory>
 #include <valijson/schema.hpp>
@@ -35,6 +37,9 @@ int jsonValidator(const nlohmann::json &request_json, const nlohmann::json &inpu
   try {
       parser.populateSchema(schemaAdapter, schema);
   } catch (const std::exception &e) {
+      std::string error = "Failed to parse schema: "; 
+      error.append(e.what());
+      throw std::invalid_argument("Parsing failed");
       return 1;
   }
 
@@ -44,11 +49,13 @@ int jsonValidator(const nlohmann::json &request_json, const nlohmann::json &inpu
 
   if (validator.validate(schema, targetAdapter, &results)) {
     return 0;
-  } else {
-    return 1;
   }
 
+  throw std::invalid_argument("Validation failed.");
+
   results.end();
+
+  return 1;
 }
 
 void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
