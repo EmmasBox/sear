@@ -9,6 +9,7 @@
 #include "../conversion.hpp"
 #include "irrsdl00.hpp"
 #include "irrseq00.hpp"
+#include "logger.hpp"
 
 #ifdef __TOS_390__
 #include <unistd.h>
