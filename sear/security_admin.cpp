@@ -37,9 +37,9 @@ int jsonValidator(const nlohmann::json &request_json, const nlohmann::json &inpu
   try {
       parser.populateSchema(schemaAdapter, schema);
   } catch (const std::exception &e) {
-      std::string error = "Failed to parse schema: "; 
-      error.append(e.what());
-      throw std::invalid_argument("Parsing failed");
+      std::string error_str = "Failed to parse schema: "; 
+      error_str.append(e.what());
+      throw std::invalid_argument(error_str);
       return 1;
   }
 
@@ -51,7 +51,15 @@ int jsonValidator(const nlohmann::json &request_json, const nlohmann::json &inpu
     return 0;
   }
 
-  throw std::invalid_argument("Validation failed.");
+  valijson::ValidationResults::Error error;
+  unsigned int errorNum = 1;
+  std::string validationErrorMessage;
+  while (results.popError(error)) {
+      validationErrorMessage.append(error.description + " ");
+      ++errorNum;
+  }
+  
+  throw std::invalid_argument( validationErrorMessage );
 
   results.end();
 
@@ -62,18 +70,6 @@ void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
   nlohmann::json request_json;
 
   try {
-    // Ensure Request JSON is a NULL terminated string.
-    auto request_json_unique_ptr = std::make_unique<char[]>(length + 1);
-    std::memset(request_json_unique_ptr.get(), 0, length + 1);
-    std::strncpy(request_json_unique_ptr.get(), p_request_json_string, length);
-    // Parse Request JSON
-    try {
-      request_json = nlohmann::json::parse(request_json_unique_ptr.get());
-    } catch (const nlohmann::json::parse_error &ex) {
-      request_.setSEARReturnCode(8);
-      throw SEARError(std::string("Syntax error in request JSON at byte ") +
-                      std::to_string(ex.byte));
-    }
 
     Logger::getInstance().debug("Validating parameters ...");
     try {
@@ -86,6 +82,19 @@ void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
       throw SEARError(schema_error_str);
     }
     Logger::getInstance().debug("Done");
+
+    // Ensure Request JSON is a NULL terminated string.
+    auto request_json_unique_ptr = std::make_unique<char[]>(length + 1);
+    std::memset(request_json_unique_ptr.get(), 0, length + 1);
+    std::strncpy(request_json_unique_ptr.get(), p_request_json_string, length);
+    // Parse Request JSON
+    try {
+      request_json = nlohmann::json::parse(request_json_unique_ptr.get());
+    } catch (const nlohmann::json::parse_error &ex) {
+      request_.setSEARReturnCode(8);
+      throw SEARError(std::string("Syntax error in request JSON at byte ") +
+                      std::to_string(ex.byte));
+    }
 
     // Load Request
     request_.load(request_json);
