@@ -49,7 +49,6 @@ bool jsonValidator(const nlohmann::json &request_json, const nlohmann::json &inp
     return false;
   }
 
-  results.free();
 }
 
 void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
