@@ -48,6 +48,12 @@ bool jsonValidator(const nlohmann::json &request_json, const nlohmann::json &inp
   } else {
     return false;
   }
+
+  schema.free()
+  validator.free()
+  targetAdapter.free()
+  schemaAdapter.free()
+  ValidationResults.free()
 }
 
 void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
