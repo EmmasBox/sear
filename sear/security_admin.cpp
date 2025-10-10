@@ -3,7 +3,6 @@
 #include <arpa/inet.h>
 
 #include <memory>
-#include <stdexcept>
 #include <valijson/schema.hpp>
 #include <valijson/schema_parser.hpp>
 #include <valijson/validator.hpp>
