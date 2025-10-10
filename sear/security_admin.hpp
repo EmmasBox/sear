@@ -1,7 +1,6 @@
 #ifndef __SEAR_SECURITY_ADMIN_H_
 #define __SEAR_SECURITY_ADMIN_H_
 
-#include <cstdint>
 #include <nlohmann/json.hpp>
 #include <valijson/schema.hpp>
 #include <valijson/schema_parser.hpp>
