@@ -35,7 +35,7 @@ bool jsonValidator(const nlohmann::json &request_json, const nlohmann::json &inp
   try {
       parser.populateSchema(schemaAdapter, schema);
   } catch (const std::exception &e) {
-      return false;
+      return 1;
   }
 
   valijson::ValidationResults results;
@@ -43,9 +43,9 @@ bool jsonValidator(const nlohmann::json &request_json, const nlohmann::json &inp
   valijson::Validator validator(valijson::Validator::kStrongTypes);
 
   if (validator.validate(schema, targetAdapter, &results)) {
-    return true;
+    return 0;
   } else {
-    return false;
+    return 1;
   }
 
   results.end();
