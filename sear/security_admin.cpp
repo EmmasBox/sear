@@ -26,7 +26,7 @@ SecurityAdmin::SecurityAdmin(sear_result_t *p_result, const bool &debug) {
   request_ = SecurityRequest(p_result);
 }
 
-bool jsonValidator(const nlohmann::json &request_json, const nlohmann::json &input_schema) {
+int jsonValidator(const nlohmann::json &request_json, const nlohmann::json &input_schema) {
 
   // Parse the json schema into an internal schema format
   valijson::Schema schema;
