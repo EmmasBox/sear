@@ -16,6 +16,7 @@
         "pysear",
         "RACF",
         "rvary",
-        "uacc"
+        "uacc",
+        "valijson"
     ]
 }
