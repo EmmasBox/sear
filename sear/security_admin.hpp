@@ -25,7 +25,7 @@ class SecurityAdmin {
   void doRemoveCertificate(KeyringModifier &modifier);
 
  public:
-  SecurityAdmin(sear_result_t *p_result, bool debug);
+  SecurityAdmin(sear_result_t *p_result, const bool &debug);
   void makeRequest(const char *p_request_json_string, int length);
 };
 }  // namespace SEAR

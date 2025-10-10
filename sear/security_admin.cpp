@@ -21,7 +21,7 @@
 #include "sear_schema.hpp"
 
 namespace SEAR {
-SecurityAdmin::SecurityAdmin(sear_result_t *p_result, bool debug) {
+SecurityAdmin::SecurityAdmin(sear_result_t *p_result, const bool &debug) {
   Logger::getInstance().setDebug(debug);
   request_ = SecurityRequest(p_result);
 }
