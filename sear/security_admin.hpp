@@ -11,7 +11,6 @@
 #include "extractor.hpp"
 #include "keyring_modifier.hpp"
 #include "sear_result.h"
-#include "sear_schema.hpp"
 #include "security_request.hpp"
 
 namespace SEAR {
