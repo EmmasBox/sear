@@ -25,6 +25,7 @@
 
 #pragma once
 
+#include <optional>
 #include <string>
 #include <nlohmann/json.hpp>
 
@@ -247,7 +248,7 @@ public:
 
     /// Construct a NlohmannJsonArray referencing an empty array.
     NlohmannJsonArray()
-      : m_value(emptyArray()) { }
+      : m_value(emptyArray) { }
 
     /**
      * @brief   Construct a NlohmannJsonArray referencing a specific NlohmannJson
@@ -295,16 +296,8 @@ public:
 
 private:
 
-    /**
-     * @brief   Return a reference to a NlohmannJson value that is an empty array.
-     *
-     * Note that the value returned by this function is a singleton.
-     */
-    static const nlohmann::json & emptyArray()
-    {
-        static const nlohmann::json array = nlohmann::json::array();
-        return array;
-    }
+    /// Shared nlohmann::json instance used to represent empty array.
+    static inline const nlohmann::json emptyArray = nlohmann::json::array();
 
     /// Reference to the contained value
     const nlohmann::json &m_value;
@@ -330,7 +323,7 @@ public:
 
     /// Construct a NlohmannJsonObject referencing an empty object singleton.
     NlohmannJsonObject()
-      : m_value(emptyObject()) { }
+      : m_value(emptyObject) { }
 
     /**
      * @brief   Construct a NlohmannJsonObject referencing a specific NlohmannJson
@@ -386,16 +379,8 @@ public:
 
 private:
 
-    /**
-     * @brief   Return a reference to a NlohmannJson value that is empty object.
-     *
-     * Note that the value returned by this function is a singleton.
-     */
-    static const nlohmann::json & emptyObject()
-    {
-        static const nlohmann::json object = nlohmann::json::object();
-        return object;
-    }
+    /// Shared nlohmann::json instance used to represent empty object.
+    static inline const nlohmann::json emptyObject = nlohmann::json::object();
 
     /// Reference to the contained object
     const nlohmann::json &m_value;
@@ -458,7 +443,7 @@ public:
 
     /// Construct a wrapper for the empty object singleton
     NlohmannJsonValue()
-      : m_value(emptyObject()) { }
+      : m_value(emptyObject) { }
 
     /// Construct a wrapper for a specific NlohmannJson value
     NlohmannJsonValue(const nlohmann::json &value)
@@ -485,10 +470,10 @@ public:
      *
      * Otherwise it will return an empty optional.
      */
-    opt::optional<NlohmannJsonArray<ValueType>> getArrayOptional() const
+    std::optional<NlohmannJsonArray<ValueType>> getArrayOptional() const
     {
         if (m_value.is_array()) {
-            return opt::make_optional(NlohmannJsonArray<ValueType>(m_value));
+            return std::make_optional(NlohmannJsonArray<ValueType>(m_value));
         }
 
         return {};
@@ -553,7 +538,7 @@ public:
      *
      * Otherwise it will return an empty optional.
      */
-    opt::optional<NlohmannJsonObject> getObjectOptional() const;
+    std::optional<NlohmannJsonObject> getObjectOptional() const;
 
     /**
      * @brief   Retrieve the number of members in the object
@@ -633,12 +618,8 @@ public:
 
 private:
 
-    /// Return a reference to an empty object singleton
-    static const nlohmann::json & emptyObject()
-    {
-        static const nlohmann::json object = nlohmann::json::object();
-        return object;
-    }
+    /// Shared NlohmannJson value instance used to represent an empty object
+    static inline const nlohmann::json emptyObject = nlohmann::json::object();
 
     /// Reference to the contained NlohmannJson value.
     const nlohmann::json &m_value;
@@ -673,11 +654,11 @@ public:
 };
 
 template <class ValueType>
-opt::optional<NlohmannJsonObject>
+std::optional<NlohmannJsonObject>
 NlohmannJsonValue<ValueType>::getObjectOptional() const
 {
     if (m_value.is_object()) {
-        return opt::make_optional(NlohmannJsonObject(m_value));
+        return std::make_optional(NlohmannJsonObject(m_value));
     }
 
     return {};
