@@ -9,6 +9,7 @@
 #include <valijson/schema_parser.hpp>
 #include <valijson/validator.hpp>
 #include <valijson/adapters/nlohmann_json_adapter.hpp>
+#include <valijson/validation_results.hpp>
 
 #include "irrsmo00.hpp"
 #include "irrsmo00_error.hpp"
