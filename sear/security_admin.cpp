@@ -5,6 +5,7 @@
 #include <stdexcept>
 
 #include <memory>
+#include <string>
 #include <valijson/schema.hpp>
 #include <valijson/schema_parser.hpp>
 #include <valijson/validator.hpp>
@@ -16,6 +17,7 @@
 #include "keyring_extractor.hpp"
 #include "keyring_modifier.hpp"
 #include "keyring_post_processor.hpp"
+#include "nlohmann/json.hpp"
 #include "profile_extractor.hpp"
 #include "profile_post_processor.hpp"
 #include "sear_error.hpp"
@@ -56,7 +58,7 @@ int jsonValidator(const nlohmann::json &request_json, const nlohmann::json &inpu
   unsigned int errorNum = 1;
   std::string validationErrorMessage;
   while (results.popError(error)) {
-      validationErrorMessage.append(error.description + " ");
+      validationErrorMessage.append(error.description + " " + error.jsonPointer);
       ++errorNum;
   }
   
@@ -72,6 +74,12 @@ void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
 
   try {
 
+    // Ensure Request JSON is a NULL terminated string.
+    auto request_json_unique_ptr = std::make_unique<char[]>(length + 1);
+    std::memset(request_json_unique_ptr.get(), 0, length + 1);
+    std::strncpy(request_json_unique_ptr.get(), p_request_json_string, length);
+    // Parse Request JSON
+    
     Logger::getInstance().debug("Validating parameters ...");
     try {
       jsonValidator(request_json, SEAR_SCHEMA);
@@ -84,18 +92,13 @@ void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
     }
     Logger::getInstance().debug("Done");
 
-    // Ensure Request JSON is a NULL terminated string.
-    auto request_json_unique_ptr = std::make_unique<char[]>(length + 1);
-    std::memset(request_json_unique_ptr.get(), 0, length + 1);
-    std::strncpy(request_json_unique_ptr.get(), p_request_json_string, length);
-    // Parse Request JSON
     try {
-      request_json = nlohmann::json::parse(request_json_unique_ptr.get());
+      request_json = nlohmann::json::parse(request_json_unique_ptr.get(),nullptr,true,true);
     } catch (const nlohmann::json::parse_error &ex) {
       request_.setSEARReturnCode(8);
       throw SEARError(std::string("Syntax error in request JSON at byte ") +
                       std::to_string(ex.byte));
-    }
+    } 
 
     // Load Request
     request_.load(request_json);
