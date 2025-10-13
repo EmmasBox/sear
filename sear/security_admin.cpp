@@ -78,7 +78,6 @@ void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
     auto request_json_unique_ptr = std::make_unique<char[]>(length + 1);
     std::memset(request_json_unique_ptr.get(), 0, length + 1);
     std::strncpy(request_json_unique_ptr.get(), p_request_json_string, length);
-    // Parse Request JSON
     
     Logger::getInstance().debug("Validating parameters ...");
     try {
@@ -92,6 +91,7 @@ void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
     }
     Logger::getInstance().debug("Done");
 
+    // Parse Request JSON
     try {
       request_json = nlohmann::json::parse(request_json_unique_ptr.get(),nullptr,true,true);
     } catch (const nlohmann::json::parse_error &ex) {
