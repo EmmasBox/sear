@@ -45,7 +45,6 @@ int parameterValidator(const nlohmann::json &request_json, const nlohmann::json 
       std::string error_str = "Failed to parse schema: "; 
       error_str.append(e.what());
       throw std::invalid_argument(error_str);
-      return 1;
   }
 
   valijson::ValidationResults results;
@@ -64,9 +63,9 @@ int parameterValidator(const nlohmann::json &request_json, const nlohmann::json 
       ++errorNum;
   }
   
-  throw std::invalid_argument( validationErrorMessage );
-
   results.end();
+
+  throw std::invalid_argument( validationErrorMessage );
 
   return 1;
 }
@@ -82,6 +81,7 @@ void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
 
     Logger::getInstance().debug("Validating parameters ...");
     try {
+      Logger::getInstance().debug(request_json_unique_ptr.get());
       request_json = nlohmann::json::parse(request_json_unique_ptr.get(),{},false);
       parameterValidator(request_json, SEAR_SCHEMA);
     } catch (const nlohmann::json::exception &exception) {
