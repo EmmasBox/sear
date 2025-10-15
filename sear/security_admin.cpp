@@ -80,11 +80,9 @@ void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
     std::memset(request_json_unique_ptr.get(), 0, length + 1);
     std::strncpy(request_json_unique_ptr.get(), p_request_json_string, length);
 
-    const std::string& json_string = toUTF8(request_json_unique_ptr.get(),"ASCII");
-
     Logger::getInstance().debug("Validating parameters ...");
     try {
-      request_json = nlohmann::json::parse(json_string,{},false);
+      request_json = nlohmann::json::parse(request_json_unique_ptr.get(),{},false);
       parameterValidator(request_json, SEAR_SCHEMA);
     } catch (const nlohmann::json::exception &exception) {
       request_.setSEARReturnCode(8);
