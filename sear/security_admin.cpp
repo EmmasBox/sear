@@ -82,7 +82,7 @@ void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
 
     Logger::getInstance().debug("Validating parameters ...");
     try {
-      parameterValidator(p_request_json_string, SEAR_SCHEMA);
+      parameterValidator(request_json_unique_ptr.get(), SEAR_SCHEMA);
     } catch (const std::exception &ex) {
       request_.setSEARReturnCode(4);
       throw SEARError(ex.what());
