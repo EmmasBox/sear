@@ -26,7 +26,7 @@ class SecurityAdmin {
 
  public:
   SecurityAdmin(sear_result_t *p_result, const bool &debug);
-  void makeRequest(const char *p_request_json_string, int length);
+  void makeRequest(char *p_request_json_string, int length);
 };
 }  // namespace SEAR
 

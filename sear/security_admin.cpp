@@ -67,7 +67,7 @@ int parameterValidator(const nlohmann::json &request_json, const nlohmann::json 
   throw std::invalid_argument( validationErrorMessage );
 }
 
-void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
+void SecurityAdmin::makeRequest(char *p_request_json_string, int length) {
   nlohmann::json request_json;
 
   try {
@@ -79,7 +79,7 @@ void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
 
     // Parse Request JSON
     try {
-      request_json = nlohmann::json::parse(request_json_unique_ptr.get(),nullptr,true,true);
+      request_json = nlohmann::json::parse(request_json_unique_ptr.get());
     } catch (const nlohmann::json::parse_error &ex) {
       request_.setSEARReturnCode(4);
       throw SEARError(std::string("Syntax error in request JSON at byte ") +
