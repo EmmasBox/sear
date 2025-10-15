@@ -119,8 +119,6 @@ void ProfilePostProcessor::postProcessSearchGeneric(SecurityRequest &request, co
     int len = std::strlen(found_profiles[i]);
     std::string profile_name =
         ProfilePostProcessor::decodeEBCDICBytes(found_profiles[i], len, encoding);
-    Logger::getInstance().debug("found profile");
-    Logger::getInstance().debug(profile_name);
     repeat_group_profiles.push_back(profile_name);
     free(found_profiles[i]);
   }
