@@ -14,7 +14,6 @@
 #include <valijson/validation_results.hpp>
 #include <nlohmann/json.hpp>
 
-#include "conversion.hpp"
 #include "irrsmo00.hpp"
 #include "irrsmo00_error.hpp"
 #include "keyring_extractor.hpp"

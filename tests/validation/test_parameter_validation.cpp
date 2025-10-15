@@ -5,9 +5,9 @@
 #include <cstring>
 #include <string>
 
-#include "../../sear/sear.h"
-#include "../unit_test_utilities.hpp"
-#include "../unity/unity.h"
+#include "sear/sear.h"
+#include "tests/unit_test_utilities.hpp"
+#include "tests/unity/unity.h"
 #include "logger.hpp"
 
 void test_handle_syntax_error() {
