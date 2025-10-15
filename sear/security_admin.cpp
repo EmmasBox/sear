@@ -1,6 +1,7 @@
 #include "security_admin.hpp"
 
 #include <arpa/inet.h>
+#include <cstddef>
 #include <exception>
 #include <stdexcept>
 
@@ -11,13 +12,14 @@
 #include <valijson/validator.hpp>
 #include <valijson/adapters/nlohmann_json_adapter.hpp>
 #include <valijson/validation_results.hpp>
+#include <nlohmann/json.hpp>
 
+#include "conversion.hpp"
 #include "irrsmo00.hpp"
 #include "irrsmo00_error.hpp"
 #include "keyring_extractor.hpp"
 #include "keyring_modifier.hpp"
 #include "keyring_post_processor.hpp"
-#include "nlohmann/json.hpp"
 #include "profile_extractor.hpp"
 #include "profile_post_processor.hpp"
 #include "sear_error.hpp"
@@ -31,7 +33,7 @@ SecurityAdmin::SecurityAdmin(sear_result_t *p_result, const bool &debug) {
   request_ = SecurityRequest(p_result);
 }
 
-int jsonValidator(const nlohmann::json &request_json, const nlohmann::json &input_schema) {
+int parameterValidator(const nlohmann::json &request_json, const nlohmann::json &input_schema) {
 
   // Parse the json schema into an internal schema format
   valijson::Schema schema;
@@ -58,7 +60,7 @@ int jsonValidator(const nlohmann::json &request_json, const nlohmann::json &inpu
   unsigned int errorNum = 1;
   std::string validationErrorMessage;
   while (results.popError(error)) {
-      validationErrorMessage.append(error.description + " " + error.jsonPointer);
+      validationErrorMessage.append(error.description + " @ " + error.jsonPointer + ". ");
       ++errorNum;
   }
   
@@ -73,15 +75,21 @@ void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
   nlohmann::json request_json;
 
   try {
-
     // Ensure Request JSON is a NULL terminated string.
     auto request_json_unique_ptr = std::make_unique<char[]>(length + 1);
     std::memset(request_json_unique_ptr.get(), 0, length + 1);
     std::strncpy(request_json_unique_ptr.get(), p_request_json_string, length);
-    
+
+    const std::string& json_string = toUTF8(request_json_unique_ptr.get(),"ASCII");
+
     Logger::getInstance().debug("Validating parameters ...");
     try {
-      jsonValidator(request_json, SEAR_SCHEMA);
+      request_json = nlohmann::json::parse(json_string,{},false);
+      parameterValidator(request_json, SEAR_SCHEMA);
+    } catch (const nlohmann::json::exception &exception) {
+      request_.setSEARReturnCode(8);
+      throw SEARError(std::string("Syntax error in request JSON at byte ") +
+                      (exception.what()));
     } catch (const std::exception &ex) {
       request_.setSEARReturnCode(8);
       std::string schema_error_str = "Invalid request schema: ";
@@ -90,15 +98,6 @@ void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
       throw SEARError(schema_error_str);
     }
     Logger::getInstance().debug("Done");
-
-    // Parse Request JSON
-    try {
-      request_json = nlohmann::json::parse(request_json_unique_ptr.get(),nullptr,true,true);
-    } catch (const nlohmann::json::parse_error &ex) {
-      request_.setSEARReturnCode(8);
-      throw SEARError(std::string("Syntax error in request JSON at byte ") +
-                      std::to_string(ex.byte));
-    } 
 
     // Load Request
     request_.load(request_json);

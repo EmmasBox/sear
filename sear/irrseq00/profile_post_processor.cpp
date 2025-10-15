@@ -17,6 +17,7 @@
 #include <arpa/inet.h>
 
 #include "key_map.hpp"
+#include "logger.hpp"
 
 #ifdef __TOS_390__
 #include <unistd.h>
@@ -118,6 +119,7 @@ void ProfilePostProcessor::postProcessSearchGeneric(SecurityRequest &request, co
     int len = std::strlen(found_profiles[i]);
     std::string profile_name =
         ProfilePostProcessor::decodeEBCDICBytes(found_profiles[i], len, encoding);
+    Logger::getInstance().debug(profile_name);
     repeat_group_profiles.push_back(profile_name);
     free(found_profiles[i]);
   }
