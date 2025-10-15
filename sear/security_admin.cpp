@@ -76,23 +76,21 @@ void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
     std::memset(request_json_unique_ptr.get(), 0, length + 1);
     std::strncpy(request_json_unique_ptr.get(), p_request_json_string, length);
 
-    Logger::getInstance().debug("Validating parameters ...");
+    // Parse Request JSON
     try {
-      Logger::getInstance().debug(request_json_unique_ptr.get());
-      request_json = nlohmann::json::parse(request_json_unique_ptr.get(),{},false);
-      parameterValidator(request_json, SEAR_SCHEMA);
-    } catch (const nlohmann::json::exception &exception) {
+      request_json = nlohmann::json::parse(request_json_unique_ptr.get());
+    } catch (const nlohmann::json::parse_error &ex) {
       request_.setSEARReturnCode(8);
       throw SEARError(std::string("Syntax error in request JSON at byte ") +
-                      (exception.what()));
+        std::to_string(ex.byte));
+    } 
+
+    Logger::getInstance().debug("Validating parameters ...");
+    try {
+      parameterValidator(request_json, SEAR_SCHEMA);
     } catch (const std::exception &ex) {
-      request_.setSEARReturnCode(8);
-      std::string schema_error_str = "Invalid request schema: ";
-      schema_error_str.append(ex.what());
       
-      throw SEARError(schema_error_str);
     }
-    Logger::getInstance().debug("Done");
 
     // Load Request
     request_.load(request_json);
