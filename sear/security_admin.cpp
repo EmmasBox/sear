@@ -76,11 +76,12 @@ void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
     std::memset(request_json_unique_ptr.get(), 0, length + 1);
     std::strncpy(request_json_unique_ptr.get(), p_request_json_string, length);
 
+
     // Parse Request JSON
     try {
-      request_json = nlohmann::json::parse(request_json_unique_ptr.get());
+      request_json = nlohmann::json::parse(request_json_unique_ptr.get(),nullptr,true,true);
     } catch (const nlohmann::json::parse_error &ex) {
-      request_.setSEARReturnCode(8);
+      request_.setSEARReturnCode(4);
       throw SEARError(std::string("Syntax error in request JSON at byte ") +
         std::to_string(ex.byte));
     } 
@@ -89,8 +90,11 @@ void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
     try {
       parameterValidator(request_json, SEAR_SCHEMA);
     } catch (const std::exception &ex) {
-      
+      request_.setSEARReturnCode(4);
+
+      std::string schema_error_str = "Invalid request schema";
     }
+
 
     // Load Request
     request_.load(request_json);
