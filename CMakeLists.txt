@@ -181,6 +181,8 @@ target_include_directories(
     externals/compat
     externals/valijson
     tests/irrsdl00
+    tests/irrseq00
+    tests/irrsmo00
     tests/zoslib
 )
 # Extra defines for compiling test_runner
