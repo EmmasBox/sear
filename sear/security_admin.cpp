@@ -13,6 +13,7 @@
 #include <valijson/adapters/nlohmann_json_adapter.hpp>
 #include <valijson/validation_results.hpp>
 #include <nlohmann/json.hpp>
+#include <valijson/adapters/std_string_adapter.hpp>
 
 #include "irrsmo00.hpp"
 #include "irrsmo00_error.hpp"
@@ -32,7 +33,7 @@ SecurityAdmin::SecurityAdmin(sear_result_t *p_result, const bool &debug) {
   request_ = SecurityRequest(p_result);
 }
 
-int parameterValidator(const nlohmann::json &request_json, const nlohmann::json &input_schema) {
+int parameterValidator(const std::string &request_json, const nlohmann::json &input_schema) {
 
   // Parse the json schema into an internal schema format
   valijson::Schema schema;
@@ -47,7 +48,7 @@ int parameterValidator(const nlohmann::json &request_json, const nlohmann::json 
   }
 
   valijson::ValidationResults results;
-  valijson::adapters::NlohmannJsonAdapter targetAdapter(request_json);
+  valijson::adapters::StdStringAdapter targetAdapter(request_json);
   valijson::Validator validator(valijson::Validator::kStrongTypes);
 
   if (validator.validate(schema, targetAdapter, &results)) {
@@ -58,7 +59,10 @@ int parameterValidator(const nlohmann::json &request_json, const nlohmann::json 
   unsigned int errorNum = 1;
   std::string validationErrorMessage;
   while (results.popError(error)) {
-      validationErrorMessage.append(error.description + " @ " + error.jsonPointer + ". ");
+      validationErrorMessage.append(error.description);
+      for (auto node : error.context) {
+        validationErrorMessage.append("@" + std::string(node + " node. "));
+      }
       ++errorNum;
   }
   
@@ -76,20 +80,12 @@ void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
     std::memset(request_json_unique_ptr.get(), 0, length + 1);
     std::strncpy(request_json_unique_ptr.get(), p_request_json_string, length);
 
-    // Parse Request JSON
-    try {
-      request_json = nlohmann::json::parse(request_json_unique_ptr.get());
-    } catch (const nlohmann::json::parse_error &ex) {
-      request_.setSEARReturnCode(8);
-      throw SEARError(std::string("Syntax error in request JSON at byte ") +
-        std::to_string(ex.byte));
-    } 
-
     Logger::getInstance().debug("Validating parameters ...");
     try {
-      parameterValidator(request_json, SEAR_SCHEMA);
+      parameterValidator(p_request_json_string, SEAR_SCHEMA);
     } catch (const std::exception &ex) {
-      
+      request_.setSEARReturnCode(4);
+      throw SEARError(ex.what());
     }
 
     // Load Request
