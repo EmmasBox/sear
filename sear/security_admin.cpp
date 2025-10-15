@@ -66,8 +66,6 @@ int parameterValidator(const nlohmann::json &request_json, const nlohmann::json 
   results.end();
 
   throw std::invalid_argument( validationErrorMessage );
-
-  return 1;
 }
 
 void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
