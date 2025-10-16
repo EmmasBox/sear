@@ -3,6 +3,7 @@
 #include <arpa/inet.h>
 #include <cstddef>
 #include <exception>
+#include <iostream>
 #include <stdexcept>
 
 #include <memory>
@@ -12,6 +13,7 @@
 #include <valijson/validator.hpp>
 #include <valijson/adapters/nlohmann_json_adapter.hpp>
 #include <valijson/validation_results.hpp>
+#include <valijson/utils/file_utils.hpp>
 #include <nlohmann/json.hpp>
 #include <valijson/adapters/std_string_adapter.hpp>
 
@@ -35,10 +37,19 @@ SecurityAdmin::SecurityAdmin(sear_result_t *p_result, const bool &debug) {
 
 int parameterValidator(const std::string &request_json, const nlohmann::json &input_schema) {
 
+  // Load the document that is to be validated
+  std::string schema_string;
+  if (!valijson::utils::loadFile("schema.json", schema_string)) {
+      std::string error_str = "Failed to load schema"; 
+      throw std::invalid_argument(error_str);
+  }
+
+  nlohmann::json schema_nlohmann = nlohmann::json::parse(schema_string);
+
   // Parse the json schema into an internal schema format
   valijson::Schema schema;
   valijson::SchemaParser parser;
-  valijson::adapters::NlohmannJsonAdapter schemaAdapter(input_schema);
+  valijson::adapters::NlohmannJsonAdapter schemaAdapter(schema_nlohmann);
   try {
       parser.populateSchema(schemaAdapter, schema);
   } catch (const std::exception &e) {
@@ -46,6 +57,7 @@ int parameterValidator(const std::string &request_json, const nlohmann::json &in
       error_str.append(e.what());
       throw std::invalid_argument(error_str);
   }
+
 
   valijson::ValidationResults results;
   valijson::adapters::StdStringAdapter targetAdapter(request_json);
