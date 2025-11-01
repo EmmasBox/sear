@@ -27,6 +27,25 @@
           "const": "extract"
         },
         "admin_type": {
+          "const": "racmap"
+        },
+        "userid": {
+          "$ref": "#/$defs/eightCharacterString"
+        }
+      },
+      "required": [
+        "operation",
+        "admin_type",
+        "userid"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "operation": {
+          "const": "extract"
+        },
+        "admin_type": {
           "const": "user"
         },
         "userid": {
