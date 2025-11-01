@@ -6,6 +6,7 @@
 
 #include <cstdint>
 
+/* IRRSIM00 function codes */
 const uint16_t RACF_TO_NDS_FUNCTION_CODE     = 0x0003;
 const uint16_t NDS_TO_RACF_FUNCTION_CODE     = 0x0004;
 const uint16_t RACF_TO_KERB_FUNCTION_CODE    = 0x0005;
