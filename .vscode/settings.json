@@ -11,6 +11,7 @@
         "adsp",
         "cics",
         "IRRSEQ",
+        "IRRSIM",
         "IRRSMO",
         "omvs",
         "pysear",

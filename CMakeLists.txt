@@ -111,6 +111,7 @@ target_include_directories(
     sear/irrsdl00
     sear/irrseq00
     sear/irrsmo00
+    sear/irrsim00
     sear/key_map
     sear/validation
     externals/json
@@ -178,6 +179,7 @@ target_include_directories(
     sear/irrsdl00
     sear/irrseq00
     sear/irrsmo00
+    sear/irrsim00
     sear/key_map
     sear/validation
     externals/json
@@ -282,6 +284,7 @@ target_include_directories(
     sear/irrsdl00
     sear/irrseq00
     sear/irrsmo00
+    sear/irrsim00
     sear/key_map
     sear/validation
     externals/json
