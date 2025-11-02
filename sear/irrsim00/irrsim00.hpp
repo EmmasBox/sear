@@ -34,7 +34,7 @@ void IRRSIM00(char *,               // Workarea
 namespace SEAR {
     class IRRSIM00 {
         public:
-        void call_irrsim00();
+        void call_irrsim00(SecurityRequest &request);
     };
 }
 
