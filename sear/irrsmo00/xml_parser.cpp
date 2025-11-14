@@ -45,9 +45,9 @@ nlohmann::json XMLParser::buildJSONString(SecurityRequest& request) {
 
   nlohmann::json result_json;
 
-  XMLParser::XMLToJSON(xml_buffer, result_json, request);
-
-  return result_json;
+  if (XMLParser::XMLToJSON(xml_buffer, result_json, request) == 0){
+    return result_json;
+  }
 }
 
 void XMLParser::XMLToJSON(std::string xml_string, nlohmann::json& output_json, SecurityRequest& request) {
@@ -113,6 +113,6 @@ void XMLParser::XMLToJSON(std::string xml_string, nlohmann::json& output_json, S
     // Convert profile JSON to C string.
   std::string result_json_string = output_json.dump();
   Logger::getInstance().debug("new JSON:", result_json_string);
-  return;
+  return 0;
 }
 }
