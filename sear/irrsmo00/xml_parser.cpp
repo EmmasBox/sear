@@ -43,18 +43,14 @@ nlohmann::json XMLParser::buildJSONString(SecurityRequest& request) {
 
   Logger::getInstance().debug("Decoded result XML:", xml_buffer);
 
-  nlohmann::json result_json;
-
-  if (XMLParser::XMLToJSON(xml_buffer, result_json, request) == 0){
-    return result_json;
-  }
+  return XMLParser::XMLToJSON(xml_buffer, request);
 }
 
-int XMLParser::XMLToJSON(std::string xml_string, nlohmann::json& output_json, SecurityRequest& request) {
+nlohmann::json XMLParser::XMLToJSON(std::string xml_string, SecurityRequest& request) {
   rapidxml::xml_document<> doc;
   rapidxml::xml_node<> * root_node;
 
-  nlohmann::json new_json;
+  nlohmann::json output_json;
 
   std::vector<char> xml_copy {xml_string.begin(),xml_string.end()};
   xml_copy.push_back('\0');
@@ -113,6 +109,6 @@ int XMLParser::XMLToJSON(std::string xml_string, nlohmann::json& output_json, Se
     // Convert profile JSON to C string.
   std::string result_json_string = output_json.dump();
   Logger::getInstance().debug("new JSON:", result_json_string);
-  return 0;
+  return output_json;
 }
 }
