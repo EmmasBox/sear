@@ -10,6 +10,8 @@
 #include "sear_error.hpp"
 #include <rapidxml.hpp>
 
+#include <nlohmann/json.hpp>
+
 #ifdef __TOS_390__
 #include <unistd.h>
 #else
