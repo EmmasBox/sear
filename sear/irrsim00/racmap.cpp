@@ -13,6 +13,9 @@
 namespace SEAR {
 
 void Racmap::extract(SecurityRequest &request) {
+    nlohmann::json profile;
+    profile["profile"] = nlohmann::json::object();
 
+    request.setIntermediateResultJSON(profile);
 }
 } // namespace SEAR
