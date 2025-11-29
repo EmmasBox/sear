@@ -613,8 +613,8 @@
         "admin_type": {
           "const": "racmap"
         },
-        "userid": {
-          "$ref": "#/$defs/eightCharacterString"
+        "query": {
+          "type": "string"
         }
       },
       "required": [
