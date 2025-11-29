@@ -613,14 +613,33 @@
         "admin_type": {
           "const": "racmap"
         },
-        "query": {
-          "type": "string"
+        "userid": {
+          "$ref": "#/$defs/eightCharacterString"
         }
       },
       "required": [
         "operation",
         "admin_type",
         "userid"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "operation": {
+          "const": "extract"
+        },
+        "admin_type": {
+          "const": "racmap"
+        },
+        "appid": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "operation",
+        "admin_type",
+        "appid"
       ],
       "additionalProperties": false
     },
