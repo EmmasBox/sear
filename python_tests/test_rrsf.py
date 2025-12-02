@@ -48,6 +48,17 @@ def test_rsf_extract_invalid_operation_delete():
     assert "errors" in str(extract_result.result)
     assert extract_result.result["return_codes"] != successful_return_codes
 
+def test_rsf_extract_invalid_operation_alter():
+    """This test is supposed to fail"""
+    extract_result = sear(
+        {
+        "operation": "alter",
+        "admin_type": "racf-rrsf",
+        },
+    )
+    assert "errors" in str(extract_result.result)
+    assert extract_result.result["return_codes"] != successful_return_codes
+
 def test_rsf_extract_invalid_operation_search():
     """This test is supposed to fail"""
     extract_result = sear(
