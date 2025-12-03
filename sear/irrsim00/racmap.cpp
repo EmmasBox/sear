@@ -63,6 +63,8 @@ void Racmap::buildRACMAPRequest(
 }
 
 void Racmap::extract(SecurityRequest &request) {
+    uint32_t rc           = 0;
+
     nlohmann::json profile;
     profile["profile"] = nlohmann::json::object();
 
