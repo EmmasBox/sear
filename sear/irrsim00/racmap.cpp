@@ -8,7 +8,7 @@
 #include <nlohmann/json.hpp>
 
 #include "irrsim00.hpp"
-#include "security_reqeust.hpp"
+#include "security_request.hpp"
 
 namespace SEAR {
 
