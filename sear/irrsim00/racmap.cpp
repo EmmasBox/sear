@@ -28,7 +28,6 @@ void Racmap::buildRACMAPRequest(
   args->ALET_SAF_rc           = ALET;
   args->ALET_RACF_rc          = ALET;
   args->ALET_RACF_rsn         = ALET;
-  args->ACEE                  = ACEE;
   args->function_code         = function_code;
 
   /***************************************************************************/
@@ -47,20 +46,20 @@ void Racmap::buildRACMAPRequest(
 
   arg_pointers->p_function_code = &(args->function_code);
 
-  arg_pointers->p_userid_length = &(args->useridLength)
-  arg_pointers->p_userid        = &(args->userid)
+  arg_pointers->p_userid_length = &(args->useridLength);
+  arg_pointers->p_userid        = &(args->userid);
 
-  arg_pointers->p_certificate_length = &(args->useridLength)
-  arg_pointers->p_certificate        = &(args->userid)
+  arg_pointers->p_certificate_length = &(args->useridLength);
+  arg_pointers->p_certificate        = &(args->userid);
 
-  arg_pointers->p_application_userid_length = &(args->application_userid_length)
-  arg_pointers->p_application_userid        = &(args->application_userid)
+  arg_pointers->p_application_userid_length = &(args->application_userid_length);
+  arg_pointers->p_application_userid        = &(args->application_userid);
 
-  arg_pointers->p_distinguished_name_length = &(args->distinguished_name_length)
-  arg_pointers->p_distinguished_name        = &(args->distinguished_name)
+  arg_pointers->p_distinguished_name_length = &(args->distinguished_name_length);
+  arg_pointers->p_distinguished_name        = &(args->distinguished_name);
 
-  arg_pointers->p_registry_name_length      = &(args->registry_name_length)
-  arg_pointers->p_registry_name             = &(args->registry_name)
+  arg_pointers->p_registry_name_length      = &(args->registry_name_length):
+  arg_pointers->p_registry_name             = &(args->registry_name);
 }
 
 void Racmap::extract(SecurityRequest &request) {
