@@ -64,7 +64,7 @@ typedef struct {
   uint32_t *__ptr32 p_RACF_rsn;
   // extract function to perform
   uint8_t *__ptr32 p_function_code;
-  uint8_t *__ptr32 p_userid_length;
+  uint8_t *__ptr8 p_userid_length;
   char *__ptr32 p_userid;
   uint32_t *__ptr32 p_certificate_length;
   char *__ptr32 p_certificate;
