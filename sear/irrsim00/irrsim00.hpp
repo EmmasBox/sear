@@ -74,6 +74,13 @@ typedef struct {
   char *__ptr32 p_registry_name;
 } racmap_extract_arg_pointers_t;
 
+// 31-bit for IRRSIM00 arguments.
+typedef struct {
+  racmap_extract_args_t args;
+  racmap_extract_arg_pointers_t arg_pointers;
+} racmap_extract_underbar_arg_area_t;
+
+
 #pragma pack(pop)  // Restore default structure packing options.
 
 // Glue code to call IRRSIM00 assembler code.
