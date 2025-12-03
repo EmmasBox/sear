@@ -80,7 +80,6 @@ typedef struct {
   racmap_extract_arg_pointers_t arg_pointers;
 } racmap_extract_underbar_arg_area_t;
 
-
 #pragma pack(pop)  // Restore default structure packing options.
 
 // Glue code to call IRRSIM00 assembler code.
