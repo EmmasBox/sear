@@ -9,6 +9,9 @@ namespace SEAR {
 class Racmap {
     public:
     static void extract(SecurityRequest &request);
+    private:
+    void buildRACMAPRequest(
+    racmap_extract_underbar_arg_area_t *arg_area, int function_code);
 };
 }  // namespace SEAR
 
