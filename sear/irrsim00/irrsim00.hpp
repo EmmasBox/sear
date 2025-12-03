@@ -24,6 +24,8 @@ const uint16_t DID_TO_RACF_FUNCTION_CODE     = 0x0008;
 const uint16_t USER_TO_EMAIL_FUNCTION_CODE   = 0x0009;
 const uint16_t EMAIL_TO_USER_FUCTION_CODE    = 0x000A;
 
+const uint32_t ALET                          = 0x00000000;  // primary address space
+
 
 #pragma pack(push, 1)  // Don't byte align structure members.
 
