@@ -48,11 +48,11 @@ void Racmap::buildRACMAPRequest(
 
   arg_pointers->p_function_code = &(args->function_code);
 
-  arg_pointers->p_userid_length = &(args->useridLength);
+  arg_pointers->p_userid_length = &(args->userid_length);
   arg_pointers->p_userid        = &(args->userid);
 
-  arg_pointers->p_certificate_length = &(args->useridLength);
-  arg_pointers->p_certificate        = &(args->userid);
+  arg_pointers->p_certificate_length = &(args->certificate_length);
+  arg_pointers->p_certificate        = &(args->certificate);
 
   arg_pointers->p_application_userid_length = &(args->application_userid_length);
   arg_pointers->p_application_userid        = &(args->application_userid);

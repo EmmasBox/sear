@@ -41,7 +41,7 @@ typedef struct {
   // extract function to perform
   uint8_t function_code;
   uint8_t reserved;
-  uint8_t useridLength;
+  uint8_t userid_length;
   char userid[8];
   uint32_t certificate_length;
   char certificate[CERTIFICATE_MAX_LENGTH];
