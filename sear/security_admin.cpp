@@ -5,6 +5,7 @@
 #include <memory>
 #include <nlohmann/json.hpp>
 
+#include "irrsim00/racmap.hpp"
 #include "irrsmo00.hpp"
 #include "irrsmo00_error.hpp"
 #include "keyring_extractor.hpp"
@@ -12,6 +13,7 @@
 #include "keyring_post_processor.hpp"
 #include "profile_extractor.hpp"
 #include "profile_post_processor.hpp"
+#include "racmap.hpp"
 #include "sear_error.hpp"
 #include "xml_generator.hpp"
 #include "xml_parser.hpp"
@@ -55,10 +57,13 @@ void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
     // Make Request To Corresponding Callable Service
     if (request_.getOperation() == "extract" ||
         request_.getOperation() == "search") {
-      if (request_.getAdminType() != "keyring") {
+      if (request_.getAdminType() != "keyring" && request_.getAdminType() != "racmap") {
         Logger::getInstance().debug("Entering IRRSEQ00 path");
         ProfileExtractor profile_extractor;
         SecurityAdmin::doExtract(profile_extractor);
+      } else if (request_.getAdminType() == "racmap") {
+        Logger::getInstance().debug("Entering IRRSIM00 path");
+        Racmap::extract(request_)
       } else {
         Logger::getInstance().debug("Entering IRRSDL00 path");
         KeyringExtractor keyring_extractor;

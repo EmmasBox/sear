@@ -71,7 +71,7 @@ void Racmap::extract(SecurityRequest &request) {
 
     // Call R_usermap
     Logger::getInstance().debug("Calling IRRSIM00 ...");
-    rc = callRmap(reinterpret_cast<char *__ptr32>(&p_arg_area->arg_pointers));
+    rc = callRmap(reinterpret_cast<char *__ptr32>(&p_arg_area->arg_pointers,USER_TO_EMAIL_FUNCTION_CODE));
     Logger::getInstance().debug("Done");
 
     request.setIntermediateResultJSON(profile);
