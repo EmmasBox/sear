@@ -5,6 +5,8 @@
 #include "zoslib.h"
 #endif
 
+#include "racmap.hpp"
+
 #include <nlohmann/json.hpp>
 
 #include "irrsim00.hpp"
