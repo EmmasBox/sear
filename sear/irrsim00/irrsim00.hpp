@@ -67,13 +67,13 @@ typedef struct {
   uint8_t *__ptr32 p_userid_length;
   char p_userid[8];
   uint32_t *__ptr32 p_certificate_length;
-  char p_certificate[CERTIFICATE_MAX_LENGTH];
+  char * p_certificate[CERTIFICATE_MAX_LENGTH];
   uint16_t *__ptr32 p_application_userid_length;
-  char p_application_userid[APPLICATION_USERID_MAX_LENGTH];
+  char * p_application_userid[APPLICATION_USERID_MAX_LENGTH];
   uint16_t *__ptr32 p_distinguished_name_length;
-  char p_distinguished_name[DISTINGUISHED_NAME_MAX_LENGTH];
+  char * p_distinguished_name[DISTINGUISHED_NAME_MAX_LENGTH];
   uint16_t *__ptr32 p_registry_name_length;
-  char p_registry_name[MAX_REGISTRY_LENGTH];
+  char * p_registry_name[MAX_REGISTRY_LENGTH];
 } racmap_extract_arg_pointers_t;
 
 // 31-bit for IRRSIM00 arguments.
