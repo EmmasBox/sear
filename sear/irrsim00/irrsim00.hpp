@@ -64,16 +64,16 @@ typedef struct {
   uint32_t *__ptr32 p_RACF_rsn;
   // extract function to perform
   uint8_t *__ptr32 p_function_code;
-  uint8_t *__ptr8 p_userid_length;
-  char *__ptr32 p_userid;
+  uint8_t *__ptr32 p_userid_length;
+  char p_userid;
   uint32_t *__ptr32 p_certificate_length;
-  char *__ptr32 p_certificate;
+  char p_certificate;
   uint16_t *__ptr32 p_application_userid_length;
-  char *__ptr32 p_application_userid;
+  char p_application_userid;
   uint16_t *__ptr32 p_distinguished_name_length;
-  char *__ptr32 p_distinguished_name;
+  char p_distinguished_name;
   uint16_t *__ptr32 p_registry_name_length;
-  char *__ptr32 p_registry_name;
+  char p_registry_name;
 } racmap_extract_arg_pointers_t;
 
 // 31-bit for IRRSIM00 arguments.
