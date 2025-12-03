@@ -58,7 +58,7 @@ void Racmap::buildRACMAPRequest(
   arg_pointers->p_distinguished_name_length = &(args->distinguished_name_length);
   arg_pointers->p_distinguished_name        = &(args->distinguished_name);
 
-  arg_pointers->p_registry_name_length      = &(args->registry_name_length):
+  arg_pointers->p_registry_name_length      = &(args->registry_name_length);
   arg_pointers->p_registry_name             = &(args->registry_name);
 }
 
