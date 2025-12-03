@@ -13,7 +13,6 @@
 #include "keyring_post_processor.hpp"
 #include "profile_extractor.hpp"
 #include "profile_post_processor.hpp"
-#include "racmap.hpp"
 #include "sear_error.hpp"
 #include "xml_generator.hpp"
 #include "xml_parser.hpp"
