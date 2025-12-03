@@ -27,7 +27,6 @@ nlohmann::json XMLParser::buildJSONString(SecurityRequest& request) {
   int raw_result_length    = request.getRawResultLength();
 
   auto xml_ebcdic_result_unique_ptr =
-
       std::make_unique<char[]>(raw_result_length + 1);
   std::memset(xml_ebcdic_result_unique_ptr.get(), 0, raw_result_length + 1);
 
@@ -45,7 +44,11 @@ nlohmann::json XMLParser::buildJSONString(SecurityRequest& request) {
 
   Logger::getInstance().debug("Decoded result XML:", xml_buffer);
 
-  return XMLParser::XMLToJSON(xml_buffer, request);
+  nlohmann::json result_json;
+
+  result_json = XMLParser::XMLToJSON(xml_buffer, request);
+
+  return result_json;
 }
 
 nlohmann::json XMLParser::XMLToJSON(std::string xml_string, SecurityRequest& request) {
