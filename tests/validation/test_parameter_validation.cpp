@@ -1,12 +1,12 @@
-#include "tests/validation/test_parameter_validation.hpp"
+#include "test_parameter_validation.hpp"
 
 #include <sys/stat.h>
 
 #include <cstring>
 
-#include "sear/sear.h"
-#include "tests/unit_test_utilities.hpp"
-#include "tests/unity/unity.h"
+#include "sear.h"
+#include "unit_test_utilities.hpp"
+#include "unity.h"
 
 void test_handle_syntax_error() {
   char *request_json = get_sample(TEST_SYNTAX_ERROR_REQUEST_JSON, "r");
