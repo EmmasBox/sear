@@ -8,6 +8,8 @@
 #include "racmap.hpp"
 
 #include <nlohmann/json.hpp>
+#include <string>
+#include "../conversion.hpp"
 
 #include "irrsim00.hpp"
 #include "security_request.hpp"
