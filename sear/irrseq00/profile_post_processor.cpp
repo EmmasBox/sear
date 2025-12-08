@@ -225,6 +225,11 @@ void ProfilePostProcessor::postProcessRACFRRSF(SecurityRequest &request) {
   const racf_rrsf_extract_results_t *rrsf_extract_result =
       reinterpret_cast<const racf_rrsf_extract_results_t *>(p_profile);
 
+  profile["profile"]["base"]["base:subsystem_name"] = ProfilePostProcessor::decodeEBCDICBytes(rrsf_extract_result->racf_subsystem_name, 4);
+  profile["profile"]["base"]["base:subsystem_userid"] = ProfilePostProcessor::decodeEBCDICBytes(rrsf_extract_result->racf_subsystem_userid, 8);
+  profile["profile"]["base"]["base:subsystem_operator_prefix"] = ProfilePostProcessor::decodeEBCDICBytes(rrsf_extract_result->subsystem_prefix, 8);
+  profile["profile"]["base"]["base:number_of_defined_nodes"] = rrsf_extract_result->number_of_rrsf_nodes;
+  
   // Set settings
   const racf_rrsf_set_settings_t *command_redirection_settings =
       reinterpret_cast<const racf_rrsf_set_settings_t *>(rrsf_extract_result->automatic_command_redirection);
@@ -237,11 +242,6 @@ void ProfilePostProcessor::postProcessRACFRRSF(SecurityRequest &request) {
 
   const racf_rrsf_set_settings_t *application_updates_redirection_settings =
       reinterpret_cast<const racf_rrsf_set_settings_t *>(rrsf_extract_result->application_updates_redirection_settings);
-  
-  profile["profile"]["base"]["base:subsystem_name"] = ProfilePostProcessor::decodeEBCDICBytes(rrsf_extract_result->racf_subsystem_name, 4);
-  profile["profile"]["base"]["base:subsystem_userid"] = ProfilePostProcessor::decodeEBCDICBytes(rrsf_extract_result->racf_subsystem_userid, 8);
-  profile["profile"]["base"]["base:subsystem_operator_prefix"] = ProfilePostProcessor::decodeEBCDICBytes(rrsf_extract_result->subsystem_prefix, 8);
-  profile["profile"]["base"]["base:number_of_defined_nodes"] = rrsf_extract_result->number_of_rrsf_nodes;
 
   profile["profile"]["base"]["base:command_redirection_destination_node"] = ProfilePostProcessor::decodeEBCDICBytes(command_redirection_settings->node_notification_destination, 8);
   profile["profile"]["base"]["base:command_redirection_destination_node_id"] = ProfilePostProcessor::decodeEBCDICBytes(command_redirection_settings->userid_notification_destination, 8);
