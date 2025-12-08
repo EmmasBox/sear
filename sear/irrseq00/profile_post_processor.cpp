@@ -229,7 +229,7 @@ void ProfilePostProcessor::postProcessRACFRRSF(SecurityRequest &request) {
   profile["profile"]["base"]["base:subsystem_userid"] = ProfilePostProcessor::decodeEBCDICBytes(rrsf_extract_result->racf_subsystem_userid, 8);
   profile["profile"]["base"]["base:subsystem_operator_prefix"] = ProfilePostProcessor::decodeEBCDICBytes(rrsf_extract_result->subsystem_prefix, 8);
   profile["profile"]["base"]["base:number_of_defined_nodes"] = rrsf_extract_result->number_of_rrsf_nodes;
-  
+
   // Set settings
   const racf_rrsf_set_settings_t *command_redirection_settings =
       reinterpret_cast<const racf_rrsf_set_settings_t *>(rrsf_extract_result->automatic_command_redirection);
@@ -247,6 +247,11 @@ void ProfilePostProcessor::postProcessRACFRRSF(SecurityRequest &request) {
   profile["profile"]["base"]["base:command_redirection_destination_node_id"] = ProfilePostProcessor::decodeEBCDICBytes(command_redirection_settings->userid_notification_destination, 8);
   profile["profile"]["base"]["base:command_redirection_notify_level"] = ProfilePostProcessor::decodeEBCDICBytes(command_redirection_settings->notify_level, 6);
   profile["profile"]["base"]["base:command_redirection_output_level"] = ProfilePostProcessor::decodeEBCDICBytes(command_redirection_settings->output_level, 6);
+
+  profile["profile"]["base"]["base:password_redirection_destination_node"] = ProfilePostProcessor::decodeEBCDICBytes(password_redirection_settings->node_notification_destination, 8);
+  profile["profile"]["base"]["base:password_redirection_destination_node_id"] = ProfilePostProcessor::decodeEBCDICBytes(password_redirection_settings->userid_notification_destination, 8);
+  profile["profile"]["base"]["base:password_redirection_notify_level"] = ProfilePostProcessor::decodeEBCDICBytes(password_redirection_settings->notify_level, 6);
+  profile["profile"]["base"]["base:password_redirection_output_level"] = ProfilePostProcessor::decodeEBCDICBytes(password_redirection_settings->output_level, 6);
 
   // Post process nodes if any are defined
   if (rrsf_extract_result->number_of_rrsf_nodes > 0) {
