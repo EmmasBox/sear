@@ -237,13 +237,16 @@ void ProfilePostProcessor::postProcessRACFRRSF(SecurityRequest &request) {
           p_profile + offsetof(racf_rrsf_extract_results_t, automatic_command_redirection) + sizeof(racf_rrsf_set_settings_t) + 1);
 
   const racf_rrsf_set_settings_t *password_redirection_settings =
-      reinterpret_cast<const racf_rrsf_set_settings_t *>(rrsf_extract_result->automatic_password_redirection);
+      reinterpret_cast<const racf_rrsf_set_settings_t *>(
+          p_profile + offsetof(racf_rrsf_extract_results_t, automatic_password_redirection) + sizeof(racf_rrsf_set_settings_t) + 1);
 
   const racf_rrsf_set_settings_t *password_synchronization_settings =
-      reinterpret_cast<const racf_rrsf_set_settings_t *>(rrsf_extract_result->password_synchronization_settings);
+      reinterpret_cast<const racf_rrsf_set_settings_t *>(
+          p_profile + offsetof(racf_rrsf_extract_results_t, password_synchronization_settings) + sizeof(racf_rrsf_set_settings_t) + 1);
 
   const racf_rrsf_set_settings_t *application_updates_redirection_settings =
-      reinterpret_cast<const racf_rrsf_set_settings_t *>(rrsf_extract_result->application_updates_redirection_settings);
+      reinterpret_cast<const racf_rrsf_set_settings_t *>(
+          p_profile + offsetof(racf_rrsf_extract_results_t, application_updates_redirection_settings) + sizeof(racf_rrsf_set_settings_t) + 1);
 
   profile["profile"]["base"]["base:command_redirection_destination_node"] = ProfilePostProcessor::decodeEBCDICBytes(command_redirection_settings->node_notification_destination, 8);
   profile["profile"]["base"]["base:command_redirection_destination_node_id"] = ProfilePostProcessor::decodeEBCDICBytes(command_redirection_settings->userid_notification_destination, 8);
