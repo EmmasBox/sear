@@ -231,7 +231,7 @@ void ProfilePostProcessor::postProcessRACFRRSF(SecurityRequest &request) {
   profile["profile"]["base"]["base:subsystem_operator_prefix"] = ProfilePostProcessor::decodeEBCDICBytes(rrsf_extract_result->subsystem_prefix, 8);
   profile["profile"]["base"]["base:number_of_defined_nodes"] = rrsf_extract_result->number_of_rrsf_nodes;
 
-  // Set settings
+  // Set settings, as detailed in ADMN_XTRSF_SET_USER_INFO
   const racf_rrsf_set_settings_t *command_redirection_settings =
       reinterpret_cast<const racf_rrsf_set_settings_t *>(
           p_profile + offsetof(racf_rrsf_extract_results_t, automatic_command_redirection) + sizeof(racf_rrsf_set_settings_t) + 1);
@@ -249,22 +249,22 @@ void ProfilePostProcessor::postProcessRACFRRSF(SecurityRequest &request) {
           p_profile + offsetof(racf_rrsf_extract_results_t, application_updates_redirection_settings) + sizeof(racf_rrsf_set_settings_t) + 1);
 
   profile["profile"]["base"]["base:command_redirection_destination_node"] = ProfilePostProcessor::decodeEBCDICBytes(command_redirection_settings->node_notification_destination, 8);
-  profile["profile"]["base"]["base:command_redirection_destination_node_id"] = ProfilePostProcessor::decodeEBCDICBytes(command_redirection_settings->userid_notification_destination, 8);
+  profile["profile"]["base"]["base:command_redirection_destination_node_userid"] = ProfilePostProcessor::decodeEBCDICBytes(command_redirection_settings->userid_notification_destination, 8);
   profile["profile"]["base"]["base:command_redirection_notify_level"] = ProfilePostProcessor::decodeEBCDICBytes(command_redirection_settings->notify_level, 6);
   profile["profile"]["base"]["base:command_redirection_output_level"] = ProfilePostProcessor::decodeEBCDICBytes(command_redirection_settings->output_level, 6);
 
   profile["profile"]["base"]["base:password_redirection_destination_node"] = ProfilePostProcessor::decodeEBCDICBytes(password_redirection_settings->node_notification_destination, 8);
-  profile["profile"]["base"]["base:password_redirection_destination_node_id"] = ProfilePostProcessor::decodeEBCDICBytes(password_redirection_settings->userid_notification_destination, 8);
+  profile["profile"]["base"]["base:password_redirection_destination_node_userid"] = ProfilePostProcessor::decodeEBCDICBytes(password_redirection_settings->userid_notification_destination, 8);
   profile["profile"]["base"]["base:password_redirection_notify_level"] = ProfilePostProcessor::decodeEBCDICBytes(password_redirection_settings->notify_level, 6);
   profile["profile"]["base"]["base:password_redirection_output_level"] = ProfilePostProcessor::decodeEBCDICBytes(password_redirection_settings->output_level, 6);
 
   profile["profile"]["base"]["base:password_synchronization_destination_node"] = ProfilePostProcessor::decodeEBCDICBytes(password_redirection_settings->node_notification_destination, 8);
-  profile["profile"]["base"]["base:password_synchronization_destination_node_id"] = ProfilePostProcessor::decodeEBCDICBytes(password_redirection_settings->userid_notification_destination, 8);
+  profile["profile"]["base"]["base:password_synchronization_destination_node_userid"] = ProfilePostProcessor::decodeEBCDICBytes(password_redirection_settings->userid_notification_destination, 8);
   profile["profile"]["base"]["base:password_synchronization_notify_level"] = ProfilePostProcessor::decodeEBCDICBytes(password_redirection_settings->notify_level, 6);
   profile["profile"]["base"]["base:password_synchronization_output_level"] = ProfilePostProcessor::decodeEBCDICBytes(password_redirection_settings->output_level, 6);
 
   profile["profile"]["base"]["base:application_updates_redirection_destination_node"] = ProfilePostProcessor::decodeEBCDICBytes(password_redirection_settings->node_notification_destination, 8);
-  profile["profile"]["base"]["base:application_updates_redirection_destination_node_id"] = ProfilePostProcessor::decodeEBCDICBytes(password_redirection_settings->userid_notification_destination, 8);
+  profile["profile"]["base"]["base:application_updates_redirection_destination_node_userid"] = ProfilePostProcessor::decodeEBCDICBytes(password_redirection_settings->userid_notification_destination, 8);
   profile["profile"]["base"]["base:application_updates_redirection_notify_level"] = ProfilePostProcessor::decodeEBCDICBytes(password_redirection_settings->notify_level, 6);
   profile["profile"]["base"]["base:application_updates_redirection_output_level"] = ProfilePostProcessor::decodeEBCDICBytes(password_redirection_settings->output_level, 6);
 
