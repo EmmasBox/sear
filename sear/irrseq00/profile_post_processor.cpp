@@ -232,7 +232,8 @@ void ProfilePostProcessor::postProcessRACFRRSF(SecurityRequest &request) {
 
   // Set settings
   const racf_rrsf_set_settings_t *command_redirection_settings =
-      reinterpret_cast<const racf_rrsf_set_settings_t *>(rrsf_extract_result->automatic_command_redirection);
+      reinterpret_cast<const racf_rrsf_set_settings_t *>(
+          p_profile + sizeof(racf_rrsf_extract_results_t));
 
   const racf_rrsf_set_settings_t *password_redirection_settings =
       reinterpret_cast<const racf_rrsf_set_settings_t *>(rrsf_extract_result->automatic_password_redirection);
