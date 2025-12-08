@@ -407,6 +407,7 @@ void ProfilePostProcessor::postProcessRACFRRSF(SecurityRequest &request) {
     profile["profile"]["base"]["base:nodes"] = nodes;
   }
   
+  // Return results
   request.setIntermediateResultJSON(profile);
 }
 
