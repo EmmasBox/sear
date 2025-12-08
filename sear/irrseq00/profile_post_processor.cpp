@@ -231,6 +231,66 @@ void ProfilePostProcessor::postProcessRACFRRSF(SecurityRequest &request) {
   profile["profile"]["base"]["base:subsystem_operator_prefix"] = ProfilePostProcessor::decodeEBCDICBytes(rrsf_extract_result->subsystem_prefix, 8);
   profile["profile"]["base"]["base:number_of_defined_nodes"] = rrsf_extract_result->number_of_rrsf_nodes;
 
+  if (rrsf_extract_result->bit_flags == RRSF_FULLRRSFCOMM_ACTIVE) {
+    profile["profile"]["base"]["base:full_rrsf_communication_active"] = true;
+  } else {
+    profile["profile"]["base"]["base:full_rrsf_communication_active"] = false;
+  }
+
+  if (rrsf_extract_result->bit_flags == RRSF_SET_AUTODIRECT_ACTIVE) {
+    profile["profile"]["base"]["base:full_autodirect_active"] = true;
+  } else {
+    profile["profile"]["base"]["base:full_autodirect_active"] = false;
+  }
+
+  if (rrsf_extract_result->bit_flags == RRSF_SET_AUTODIRECT_APP_UPDATES) {
+    profile["profile"]["base"]["base:autodirect_application_updates"] = true;
+  } else {
+    profile["profile"]["base"]["base:autodirect_application_updates"] = false;
+  }
+
+  if (rrsf_extract_result->bit_flags == RRSF_SET_AUTO_PASSWORD_DIRECTION) {
+    profile["profile"]["base"]["base:autodirect_passwords"] = true;
+  } else {
+    profile["profile"]["base"]["base:autodirect_passwords"] = false;
+  }
+
+  if (rrsf_extract_result->bit_flags == RRSF_SET_TRACE_APPC_ACTIVE) {
+    profile["profile"]["base"]["base:appc_trace_active"] = true;
+  } else {
+    profile["profile"]["base"]["base:appc_trace_active"] = false;
+  }
+
+  if (rrsf_extract_result->bit_flags == RRSF_SET_TRACE_IMAGE_ACTIVE) {
+    profile["profile"]["base"]["base:image_trace_active"] = true;
+  } else {
+    profile["profile"]["base"]["base:image_trace_active"] = false;
+  }
+  
+  if (rrsf_extract_result->bit_flags == RRSF_SET_TRACE_SSL_ACTIVE) {
+    profile["profile"]["base"]["base:ssl_trace_active"] = true;
+  } else {
+    profile["profile"]["base"]["base:ssl_trace_active"] = false;
+  }
+
+  if (rrsf_extract_result->bit_flags == RRSF_PRIVILEGED_ATTRIBUTE) {
+    profile["profile"]["base"]["base:privileged_attribute_on"] = true;
+  } else {
+    profile["profile"]["base"]["base:privileged_attribute_on"] = false;
+  }
+
+  if (rrsf_extract_result->bit_flags == RRSF_TRUSTED_ATTRIBUTE) {
+    profile["profile"]["base"]["base:trusted_attribute_on"] = true;
+  } else {
+    profile["profile"]["base"]["base:trusted_attribute_on"] = false;
+  }
+
+  if (rrsf_extract_result->bit_flags == RRSF_NOT_ENOUGH_SPACE) {
+      request.setSEARReturnCode(4);
+      // Raise Exception if RRSF extract Failed.
+      throw SEARError("Not enough memory to extract RRSF settings");
+  }
+
   // Set settings, as detailed in ADMN_XTRSF_SET_USER_INFO
   const racf_rrsf_set_settings_t *command_redirection_settings =
       reinterpret_cast<const racf_rrsf_set_settings_t *>(
@@ -345,66 +405,6 @@ void ProfilePostProcessor::postProcessRACFRRSF(SecurityRequest &request) {
     }
     // Append node definitions to result JSON after processing them
     profile["profile"]["base"]["base:nodes"] = nodes;
-  }
-
-  if (rrsf_extract_result->bit_flags == RRSF_FULLRRSFCOMM_ACTIVE) {
-    profile["profile"]["base"]["base:full_rrsf_communication_active"] = true;
-  } else {
-    profile["profile"]["base"]["base:full_rrsf_communication_active"] = false;
-  }
-
-  if (rrsf_extract_result->bit_flags == RRSF_SET_AUTODIRECT_ACTIVE) {
-    profile["profile"]["base"]["base:full_autodirect_active"] = true;
-  } else {
-    profile["profile"]["base"]["base:full_autodirect_active"] = false;
-  }
-
-  if (rrsf_extract_result->bit_flags == RRSF_SET_AUTODIRECT_APP_UPDATES) {
-    profile["profile"]["base"]["base:autodirect_application_updates"] = true;
-  } else {
-    profile["profile"]["base"]["base:autodirect_application_updates"] = false;
-  }
-
-  if (rrsf_extract_result->bit_flags == RRSF_SET_AUTO_PASSWORD_DIRECTION) {
-    profile["profile"]["base"]["base:autodirect_passwords"] = true;
-  } else {
-    profile["profile"]["base"]["base:autodirect_passwords"] = false;
-  }
-
-  if (rrsf_extract_result->bit_flags == RRSF_SET_TRACE_APPC_ACTIVE) {
-    profile["profile"]["base"]["base:appc_trace_active"] = true;
-  } else {
-    profile["profile"]["base"]["base:appc_trace_active"] = false;
-  }
-
-  if (rrsf_extract_result->bit_flags == RRSF_SET_TRACE_IMAGE_ACTIVE) {
-    profile["profile"]["base"]["base:image_trace_active"] = true;
-  } else {
-    profile["profile"]["base"]["base:image_trace_active"] = false;
-  }
-  
-  if (rrsf_extract_result->bit_flags == RRSF_SET_TRACE_SSL_ACTIVE) {
-    profile["profile"]["base"]["base:ssl_trace_active"] = true;
-  } else {
-    profile["profile"]["base"]["base:ssl_trace_active"] = false;
-  }
-
-  if (rrsf_extract_result->bit_flags == RRSF_PRIVILEGED_ATTRIBUTE) {
-    profile["profile"]["base"]["base:privileged_attribute_on"] = true;
-  } else {
-    profile["profile"]["base"]["base:privileged_attribute_on"] = false;
-  }
-
-  if (rrsf_extract_result->bit_flags == RRSF_TRUSTED_ATTRIBUTE) {
-    profile["profile"]["base"]["base:trusted_attribute_on"] = true;
-  } else {
-    profile["profile"]["base"]["base:trusted_attribute_on"] = false;
-  }
-
-  if (rrsf_extract_result->bit_flags == RRSF_NOT_ENOUGH_SPACE) {
-      request.setSEARReturnCode(4);
-      // Raise Exception if RRSF extract Failed.
-      throw SEARError("Not enough memory to extract RRSF settings");
   }
   
   request.setIntermediateResultJSON(profile);
