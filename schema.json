@@ -6,6 +6,21 @@
     {
       "properties": {
         "operation": {
+          "const": "export"
+        },
+        "admin_type": {
+          "const": "types"
+        }
+      },
+      "required": [
+        "operation",
+        "admin_type"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "operation": {
           "const": "search"
         },
         "admin_type": {
@@ -13,6 +28,21 @@
         },
         "userid_filter": {
           "$ref": "#/$defs/eightCharacterString"
+        }
+      },
+      "required": [
+        "operation",
+        "admin_type"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "operation": {
+          "const": "export"
+        },
+        "admin_type": {
+          "const": "user"
         }
       },
       "required": [
