@@ -10,7 +10,7 @@
 namespace SEAR {
 class MetaAPIExporter {
  public:
-  void api_meta_export(SecurityRequest &request, bool profile_exists_check);
+  void api_meta_export(SecurityRequest &request);
 };
 }  // namespace SEAR
 
