@@ -51,7 +51,7 @@ nlohmann::json XMLParser::buildJSONString(SecurityRequest& request) {
   return result_json;
 }
 
-nlohmann::json XMLParser::XMLToJSON(std::string xml_string, SecurityRequest& request) {
+nlohmann::json XMLParser::XMLToJSON(const std::string& xml_string, SecurityRequest& request) {
   rapidxml::xml_document<> doc;
   rapidxml::xml_node<> * root_node;
 

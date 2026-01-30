@@ -184,6 +184,7 @@ target_include_directories(
     externals/json
     externals/json-schema-validator
     externals/iconv
+    externals/rapidxml
     tests/irrsdl00
     tests/zoslib
 )
