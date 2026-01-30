@@ -88,7 +88,7 @@ add_library(
     sear/irrsmo00/xml_generator.cpp
     sear/irrsmo00/xml_parser.cpp
 
-    sear/export/api_meta_exporter.cpp
+    sear/validate/meta_api_validator.cpp
 
     sear/key_map/key_map.cpp
     sear/validation/trait_validation.cpp
@@ -113,7 +113,7 @@ target_include_directories(
     sear/irrsdl00
     sear/irrseq00
     sear/irrsmo00
-    sear/export
+    sear/validate
     sear/key_map
     sear/validation
     externals/json

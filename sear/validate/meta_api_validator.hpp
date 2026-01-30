@@ -8,9 +8,9 @@
 #include "security_request.hpp"
 
 namespace SEAR {
-class MetaAPIExporter {
+class MetaAPIValidator {
  public:
-  void api_meta_export(SecurityRequest &request);
+  void export_valid_traits(SecurityRequest &request);
 };
 }  // namespace SEAR
 

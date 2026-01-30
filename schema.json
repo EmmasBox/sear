@@ -6,7 +6,7 @@
     {
       "properties": {
         "operation": {
-          "const": "export"
+          "const": "validate"
         },
         "admin_type": {
           "const": "types"

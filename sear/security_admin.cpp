@@ -12,6 +12,7 @@
 #include "keyring_post_processor.hpp"
 #include "profile_extractor.hpp"
 #include "profile_post_processor.hpp"
+#include "meta_api_validator"
 #include "sear_error.hpp"
 #include "xml_generator.hpp"
 #include "xml_parser.hpp"
@@ -64,6 +65,9 @@ void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
         KeyringExtractor keyring_extractor;
         SecurityAdmin::doExtract(keyring_extractor);
       }
+    } else if (request_.getOperation() == "validate") {
+      Logger::getInstance().debug("Exporting valid traits...");
+      
     } else {
       if (request_.getAdminType() == "keyring" ||
           request_.getAdminType() == "certificate") {
