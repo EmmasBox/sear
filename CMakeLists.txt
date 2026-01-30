@@ -116,6 +116,7 @@ target_include_directories(
     externals/json
     externals/json-schema-validator
     externals/iconv
+    externals/rapidxml
     # tests/zoslib include directory only needed on Linux build
     "${ZOSLIB_INCLUDE}"
     # add generated header to include path
@@ -183,6 +184,7 @@ target_include_directories(
     externals/json
     externals/json-schema-validator
     externals/iconv
+    externals/rapidxml
     tests/irrsdl00
     tests/zoslib
 )
@@ -287,6 +289,7 @@ target_include_directories(
     externals/json
     externals/json-schema-validator
     externals/iconv
+    externals/rapidxml
     tests/irrsdl00
     tests/zoslib
     "${CMAKE_CURRENT_BINARY_DIR}/sear"
