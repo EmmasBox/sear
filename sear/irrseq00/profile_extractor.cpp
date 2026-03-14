@@ -209,12 +209,7 @@ void ProfileExtractor::extract(SecurityRequest &request) {
                           filter_len))) {
           Logger::getInstance().hexDump(p_profile_name, profile_len);
 
-          auto unique_profile_name = std::make_unique<char[]>(profile_len);
-          char *profile_name       = unique_profile_name.get();
-          std::memcpy(profile_name, p_profile_name, profile_len);
-          profile_name[profile_len] = 0;
-          request.addFoundProfile(profile_name);
-          unique_profile_name.release();
+          request.addFoundProfile(std::string(std::make_unique<char[]>(profile_len), profile_len));
         } else {
           if (std::memcmp(p_profile_name, p_arg_area->args.profile_name,
                           filter_len) > 0) {
