@@ -30,7 +30,7 @@ class ProfileExtractor : public Extractor {
 struct DefaultDeleter {
   void operator()(void *ptr) const {
     Logger::getInstance().debugFree(ptr);
-    delete* ptr;
+    std::free(ptr);
     Logger::getInstance().debug("Done");
   }
 };
