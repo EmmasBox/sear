@@ -1,0 +1,25 @@
+{
+    "profile": {
+        "base": {
+            "base:appc_trace_active": false,
+            "base:autodirect_application_updates": false,
+            "base:autodirect_passwords": false,
+            "base:full_autodirect_active": false,
+            "base:full_rrsf_communication_active": false,
+            "base:image_trace_active": false,
+            "base:number_of_defined_nodes": 0,
+            "base:privileged_attribute_on": true,
+            "base:ssl_trace_active": false,
+            "base:subsystem_name": "RACF",
+            "base:subsystem_operator_prefix": "%",
+            "base:subsystem_userid": "RACFSUB",
+            "base:trusted_attribute_on": true
+        }
+    },
+    "return_codes":{
+        "racf_reason_code": 0,
+        "racf_return_code": 0,
+        "saf_return_code": 0,
+        "sear_return_code": 0
+    }
+}
