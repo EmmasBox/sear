@@ -83,7 +83,6 @@ void SecurityAdmin::makeRequest(const char *p_request_json_string, int length) {
         SecurityAdmin::doAddAlterDelete();
       }
     }
-    request_str::free()
   } catch (const SEARError &ex) {
     request_.setErrors(ex.getErrors());
   } catch (const IRRSMO00Error &ex) {
