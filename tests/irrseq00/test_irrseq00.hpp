@@ -178,7 +178,11 @@
   IRRSEQ00_RESULT_SAMPLES                                            \
   "racf_options/test_extract_racf_options_result_racf_options_not_found.json"
 
-// Data Set
+// RRSF
+#define TEST_EXTRACT_RRSF_OPTIONS_RESULT_JSON \
+  IRRSEQ00_RESULT_SAMPLES "rrsf/test_extract_rrsf_result.json"
+
+// Dataset
 #define TEST_EXTRACT_DATASET_RESULT_JSON \
   IRRSEQ00_RESULT_SAMPLES "dataset/test_extract_dataset_result.json"
 #define TEST_EXTRACT_DATASET_RESULT_RAW \
