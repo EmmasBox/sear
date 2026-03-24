@@ -76,7 +76,7 @@ else()
     set(DEBUGFLAG "")
 endif()
 
-target_include_directories(externals)
+include_directories(externals)
 
 # The library for SEAR
 add_library(
