@@ -1,8 +1,10 @@
 package sear
 
-import "json"
-import "fmt"
-import "C"
+import (
+    "fmt"
+    "encoding/json"
+	"C"
+)
 
 func sear(request struct, debug bool) {
 
