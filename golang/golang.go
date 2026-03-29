@@ -1,10 +1,10 @@
 package main
 
 // #include <sear.h>
+import "C"
 import (
     "fmt"
     "encoding/json"
-	"C"
 )
 
 func main(request struct, debug bool) {
