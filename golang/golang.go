@@ -1,4 +1,4 @@
-package sear
+package main
 
 import (
     "fmt"
@@ -6,7 +6,7 @@ import (
 	"C"
 )
 
-func sear(request struct, debug bool) {
+func main(request struct, debug bool) {
 
 	request_enc, err := json.Marshal(request)
 
