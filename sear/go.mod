@@ -1,3 +1,3 @@
-module example.com/gosear
+module example.com/sear
 
 go 1.25

@@ -1,4 +1,4 @@
-package gosear
+package sear
 
 import "testing"
 
