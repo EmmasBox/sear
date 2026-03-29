@@ -1,5 +1,6 @@
 package main
 
+// #include <sear.h>
 import (
     "fmt"
     "encoding/json"
