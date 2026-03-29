@@ -8,5 +8,7 @@
     "charliermarsh.ruff",
     // Clangd
     "llvm-vs-code-extensions.vscode-clangd",
+    // Golang
+    "golang.go"
   ]
 }
