@@ -1,3 +1,3 @@
-module sear/m/v2
+module example.com/gosear
 
 go 1.25
