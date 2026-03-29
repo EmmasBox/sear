@@ -1,16 +1,10 @@
 package main
 
+// #cgo CFLAGS: -std=c99
+// #cgo CXXFLAGS: -std=c++17
 // #include <sear.h>
 import "C"
-import (
-    "fmt"
-    "encoding/json"
-)
 
-func main(request struct, debug bool) {
+func main() {
 
-	request_enc, err := json.Marshal(request)
-
-    // Call the SEAR C++ function
-    C.callSEAR(request_enc, len(request_enc), debug)
 }
