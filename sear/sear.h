@@ -2,6 +2,7 @@
 #define __SEAR_H_
 
 #include "sear_result.h"
+#include <stdbool.h>
 
 #ifdef __cplusplus
 extern "C" {
