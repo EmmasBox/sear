@@ -1,7 +1,7 @@
 package sear
 
-// #CGO CFLAGS: -std=c99
-// #CGO CXXFLAGS: -std=c++17
+// #cgo CFLAGS: -std=c99
+// #cgo CXXFLAGS: -std=c++17
 // #include <sear.h>
 import "C"
 
